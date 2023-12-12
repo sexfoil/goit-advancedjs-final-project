@@ -1,0 +1,10 @@
+:root {
+    --color-black: #242424;
+    --color-yellow: #eea10c;
+    --color-white: #f4f4f4;
+
+    --font-primary: "DMSans", sans-serif;
+    --font-weight-primary-regular: 400;
+    --font-weight-primary-semibold: 600;
+    --font-weight-primary-bold: 700;
+}

@@ -1,0 +1,65 @@
+.exercises_top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.exercises_wrap {
+  display: flex;
+  gap: 32px;
+}
+
+.exercises_nav {
+  display: flex;
+  gap: 20px;
+}
+
+.exercises_search {
+  margin-right: 30px;
+}
+
+.exercises_wrap {
+  display: flex;
+}
+
+.exercises_side {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  gap: 32px;
+}
+
+.exercises_quote {
+  width: 444px;
+  height: 242px;
+  background-color: grey;
+}
+
+.exercises_banner-m {
+  width: 444px;
+  height: 242px;
+  background: url(/img/banner-m.webp) no-repeat;
+  border-radius: 20px;
+  background-position: top center;
+  background-size: cover;
+}
+
+.exercises_text {
+  width: 444px;
+  height: 315px;
+
+  background-color: grey;
+}
+
+.exercises_content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.exercises_item {
+  display: flex;
+  width: 290px;
+  height: 242px;
+}

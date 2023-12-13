@@ -1,0 +1,52 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero_top-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero_left {
+  width: 640px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero_title {
+  font-size: 60px;
+}
+
+.hero_slogan {
+  width: 528px;
+}
+
+.hero_right {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero_hashtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero_banner {
+  height: 350px;
+  background: url(/img/hero-banner.webp) no-repeat;
+  border-radius: 60px;
+  background-position: top center;
+  background-size: cover;
+}
+
+.hero_banner-small {
+  height: 100px;
+  width: 168px;
+  background: url(/img/banner-small.webp) no-repeat;
+  border-radius: 20px;
+  background-position: top center;
+  background-size: cover;
+}

@@ -2,6 +2,7 @@
 @import url('./util/variables.css');
 
 @import url('./base/common.css');
+@import url('./base/js-classes.css');
 @import url('./base/container.css');
 @import url('./base/button.css');
 @import url('./base/logo.css');
@@ -11,3 +12,4 @@
 @import url('./layout/footer.css');
 @import url('./layout/hero.css');
 @import url('./layout/exercises.css');
+@import url('./layout/modals.css');

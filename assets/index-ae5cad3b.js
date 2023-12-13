@@ -3,4 +3,4 @@ import{a as u}from"./vendor-a61d8330.js";(function(){const o=document.createElem
         <h4>Description: ${r.description}</h4>
         <h4>Raiting: ${r.rating}</h4>
     `}
-//# sourceMappingURL=index-18797ac1.js.map
+//# sourceMappingURL=index-ae5cad3b.js.map

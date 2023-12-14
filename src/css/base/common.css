@@ -13,4 +13,33 @@
 
 body {
     font-family: var(--font-family);
+    background-color: var(--color-white);
+}
+
+.card-text-logo {
+    color: var(--color-black);
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: var(--font-weight-primary-semibold);
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.card-text-name {
+    color: var(--color-black);
+    font-family: var(--font-family);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: var(--font-weight-primary-regular);
+    line-height: 133.33%;
+}
+
+.card-text-info {
+    color: var(--color-black);
+    font-family:var(--font-family);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: var(--font-weight-primary-regular);
+    line-height: 150%;
 }

@@ -1,10 +1,13 @@
 :root {
+
     --color-black: #242424;
     --color-yellow: #eea10c;
     --color-white: #f4f4f4;
+    --color-white-secondary: #ffffff;
 
     --font-primary: "DMSans", sans-serif;
     --font-weight-primary-regular: 400;
     --font-weight-primary-semibold: 600;
     --font-weight-primary-bold: 700;
+    
 }

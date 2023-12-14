@@ -1,34 +1,55 @@
-import axios from 'axios';
-import url from './property/url.js';
-import getExerciseById from './api.js'
+import { path, getData } from './api.js';
 
+function handleCloseModal() {
+  document.querySelector('.overlay').classList.add('display-none-js');
+}
 
-/**
- * import example
- */
-// const id = '64f389465ae26083f39b17a2!!!';
+document
+  .querySelector('#modal-close-button')
+  .addEventListener('click', handleCloseModal);
 
-// const testUrl = url.BASE_URL + url.EXERCISES + `/${id}`;
+async function fillExerciseModal(exerciseId) {
+  const dataCellNames = {
+    bodyPart: 'Body Part',
+    burnedCalories: 'Burned Calories',
+    equipment: 'Equipment',
+    popularity: 'Popularity',
+    target: 'Target',
+    time: 'Time',
+  };
 
-// async function getData() {
-//     return axios.get(testUrl)
-//         .then(result => result.data)
-//         .catch(err => err);
-// }
+  const elements = {
+    imageWrapper: document.querySelector('.modal-exercise .image-wrapper'),
+    title: document.querySelector('.modal-exercise .title'),
+    rating: document.querySelector('.modal-exercise .rating'),
+    dataWrapper: document.querySelector('.modal-exercise .data-wrapper'),
+    description: document.querySelector('.modal-exercise .description'),
+  };
 
-// let data = await getData();
+  const url = path.BASE_URL + path.EXERCISES + `/${exerciseId}`;
 
-// console.log(data);
-// document.querySelector('.test-api').innerHTML = getHtml(data);
+  const data = await getData(url);
 
-// function getHtml(data) {
-//     return `
-//         <h3>Body part: ${data.bodyPart}</h3>
-//         <h4>Description: ${data.description}</h4>
-//         <h4>Raiting: ${data.rating}</h4>
-//     `;
-// }
+  const { description, name, rating, gifUrl } = data;
 
-const id = "asasas";
-const a = await getExerciseById('64f389465ae26083f39b17a2');
-console.log(a);
+  elements.imageWrapper.innerHTML = `<image class="image" src="${gifUrl}" alt="${name}" />`;
+  elements.title.innerHTML = name;
+  elements.rating.innerHTML = rating;
+  elements.description.innerHTML = description;
+
+  for (let dataCellName of Object.keys(dataCellNames)) {
+    if (data[dataCellName]) {
+      elements.dataWrapper.insertAdjacentHTML(
+        'beforeend',
+        `
+          <div class="data-cell">
+            <div class="data-name">${dataCellNames[dataCellName]}</div>
+            <div class="data-value">${data[dataCellName]}</div>
+          </div>
+        `
+      );
+    }
+  }
+}
+
+fillExerciseModal('64f389465ae26083f39b17a2');

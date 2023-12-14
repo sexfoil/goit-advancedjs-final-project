@@ -1,6 +1,0 @@
-import{a as u}from"./vendor-a61d8330.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const n of t.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function l(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerpolicy&&(t.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?t.credentials="include":e.crossorigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function i(e){if(e.ep)return;e.ep=!0;const t=l(e);fetch(e.href,t)}})();const s={BASE_URL:"https://your-energy.b.goit.study/api",EXERCISES:"/exercises",FILTERS:"/filters",QUOTE:"/quote",SUBSCRIPTION:"/subscription",RATING:"/rating"},a="64f389465ae26083f39b17a2",f=s.BASE_URL+s.EXERCISES+`/${a}`;async function d(){return u.get(f).then(r=>r.data)}let c=await d();console.log(c);document.querySelector(".test-api").innerHTML=p(c);function p(r){return`
-        <h3>Body part: ${r.bodyPart}</h3>
-        <h4>Description: ${r.description}</h4>
-        <h4>Raiting: ${r.rating}</h4>
-    `}
-//# sourceMappingURL=index-ae5cad3b.js.map

@@ -22,15 +22,15 @@ const LSLIST = 'FavoriteExercises';
 // таким-же id то отримуємо об'єкт та додаємо його в LS
 const addToFavoritesBtn = document.querySelector('.add-to-favourite');
 
-// addToFavoritesBtn.addEventListener('click', () => {
-//   const id = addToFavoritesBtn.getAttribute('data-id');
-//   let favouriteExercises = getFavouriteExercises();
-//   if (!favouriteExercises.some(item => item._id === id)) {
-//     const newItem = favoriteItem; /// ДОДАТИ ЗАПИТ НА ОБЪЕКТ ПО _id !!!!
-//     favouriteExercises.push(newItem);
-//     localStorage.setItem(LSLIST, JSON.stringify(favouriteExercises));
-//   }
-// });
+addToFavoritesBtn.addEventListener('click', () => {
+  const id = addToFavoritesBtn.getAttribute('data-id');
+  let favouriteExercises = getFavouriteExercises();
+  if (!favouriteExercises.some(item => item._id === id)) {
+    const newItem = favoriteItem; /// ДОДАТИ ЗАПИТ НА ОБЪЕКТ ПО _id !!!!
+    favouriteExercises.push(newItem);
+    localStorage.setItem(LSLIST, JSON.stringify(favouriteExercises));
+  }
+});
 
 // Получити список карток та додати обробку клік
 document.querySelectorAll('.remove-from-favourite').forEach(button => {

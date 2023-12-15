@@ -58,16 +58,18 @@
           </p>
           <form class="footer-subscribe-form">
             <label for="subscriber-email"></label>
-
-            <input
-              class="footer-subscribe-form-input"
-              id="subscriber-email"
-              type="email"
-              name="subscriber-email"
-              pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
-              placeholder="Email"
-              required
-            />
+            <div class="input-with-loader">
+              <input
+                class="footer-subscribe-form-input"
+                id="subscriber-email"
+                type="email"
+                name="subscriber-email"
+                pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                placeholder="Email"
+                required
+              />
+              <span class="input-loader display-none-js"></span>
+            </div>
             <button class="footer-subscribe-form-button" type="submit">
               Send
             </button>

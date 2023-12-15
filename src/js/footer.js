@@ -3,9 +3,14 @@ import {
   isWhitespacesOrEmpty,
   displayWarning,
   displayInfo,
+  HideableElement,
 } from './utils/helpers.js';
 
 const subscriptionForm = document.querySelector('.footer-subscribe-form');
+const loader = new HideableElement(
+  subscriptionForm.querySelector('.input-loader'),
+  'input-loader'
+);
 
 subscriptionForm.addEventListener('submit', onSubscriptionFormSubmit);
 
@@ -25,6 +30,7 @@ function onSubscriptionFormSubmit(evt) {
 
 async function sendSubscriptionRequest(email) {
   try {
+    loader.show();
     const responseData = await postSubscription(email);
     displayInfo(responseData.message);
   } catch (error) {
@@ -44,6 +50,7 @@ async function sendSubscriptionRequest(email) {
       }
     }
   } finally {
+    loader.hide();
     subscriptionForm.reset();
   }
 }

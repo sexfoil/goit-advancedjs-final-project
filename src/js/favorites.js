@@ -15,4 +15,6 @@ const arr = [
   favoriteItem,
 ];
 favorites.innerHTML = getExerciseCardHtml(arr);
-// favorites.innerHTML = getExerciseCardHtml([]);
+// const h = getExerciseCardHtml([]);
+// console.log(h);
+// favorites.innerHTML = h;

@@ -1,61 +1,16 @@
 .visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }
 
 body {
-  font-family: var(--font-primary);
-  background-color: var(--color-white);
+    font-family: var(--font-family);
 }
-
-.card-text-logo {
-  color: var(--color-black);
-  font-family: var(--font-primary);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: var(--font-weight-primary-semibold);
-  line-height: normal;
-  text-transform: uppercase;
-}
-
-.card-text-name {
-  color: var(--color-black);
-  font-family: var(--font-primary);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: var(--font-weight-primary-regular);
-  line-height: 133.33%;
-}
-
-.card-text-info {
-  color: var(--color-black);
-  font-family: var(--font-primary);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: var(--font-weight-primary-regular);
-  line-height: 150%;
-}
-
-.usual-text {
-  color: var(--color-black);
-  font-family: var(--font-primary);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: var(--font-weight-primary-regular);
-  line-height: 128%;
-}
-
-/* .long-text {
-    width: 30px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-} */

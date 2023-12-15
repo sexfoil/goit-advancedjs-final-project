@@ -1,9 +1,11 @@
-import { postSubscription } from './api.js';
+import { AxiosError } from 'axios';
+import { subscribe } from './api.js';
 import {
   isWhitespacesOrEmpty,
   displayWarning,
   displayInfo,
   HideableElement,
+  displayError,
 } from './utils/helpers.js';
 
 const subscriptionForm = document.querySelector('.footer-subscribe-form');
@@ -31,21 +33,13 @@ function onSubscriptionFormSubmit(evt) {
 async function sendSubscriptionRequest(email) {
   try {
     loader.show();
-    const responseData = await postSubscription(email);
-    displayInfo(responseData.message);
-  } catch (error) {
-    if (error.response) {
-      switch (error.response.status) {
-        case 409:
-          {
-            displayWarning(error.response.data.message);
-          }
-          break;
-
-        default: {
-        }
-      }
+    const response = await subscribe(email);
+    if (response.status !== 201) {
+      throw new Error(response.data.message);
     }
+    displayInfo(response.data.message);
+  } catch (err) {
+    displayError(err.message);
   } finally {
     loader.hide();
     subscriptionForm.reset();

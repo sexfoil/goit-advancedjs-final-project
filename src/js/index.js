@@ -1,6 +1,7 @@
-import { getExerciseCardHtml } from './utils/html-render';
+import { getExerciseCardHtml, getCategoryCardHtml } from './utils/html-render';
 import { getExercisesByCategory } from './api.js';
 
-const a = await getExercisesByCategory(1, 12);
-console.log(a);
-getExerciseCardHtml(a);
+const categoryList = document.querySelector('.category_content');
+
+const categories = await getExercisesByCategory(1, 12);
+categoryList.innerHTML = getCategoryCardHtml(categories.results);

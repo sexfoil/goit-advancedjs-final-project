@@ -41,3 +41,21 @@ export function getExerciseCardHtml(exercises) {
     })
     .join('');
 }
+
+export function getCategoryCardHtml(category) {
+  return category
+    .map(({ filter, name, imgURL }) => {
+      return `
+            <li class="category-item">
+                <div class="category-item-container">
+                    <img class="category-img" src="${imgURL}" alt="${name}" />
+                    <div class="category-text-content">
+                        <h3>${capitalize(name)}</h3>
+                        <p>${capitalize(filter)}</p>
+                    </div>
+                </div>
+            </li>
+        `;
+    })
+    .join('');
+}

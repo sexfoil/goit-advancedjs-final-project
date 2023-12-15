@@ -37,4 +37,4 @@
                 </div>
             </li>
         `).join("")}(()=>{const s=document.querySelector(".js-menu-container"),o=document.querySelector(".js-open-menu"),a=document.querySelector(".js-close-menu"),n=document.querySelector(".js-menu-overlay"),e=document.querySelectorAll(".mobile-menu-nav-link"),t=()=>{const r=o.getAttribute("aria-expanded")==="true"||!1;o.setAttribute("aria-expanded",!r),s.classList.toggle("is-open"),n.classList.toggle("is-shown");const c=r?"enableBodyScroll":"disableBodyScroll";bodyScrollLock[c](document.body)};o.addEventListener("click",t),a.addEventListener("click",t),e.forEach(r=>r.addEventListener("click",t)),window.matchMedia("(min-width: 768px)").addEventListener("change",r=>{r.matches&&(s.classList.remove("is-open"),o.setAttribute("aria-expanded",!1),n.classList.remove("is-shown"),bodyScrollLock.enableBodyScroll(document.body))})})();export{u as a,d as g};
-//# sourceMappingURL=mobile-2e81094e.js.map
+//# sourceMappingURL=mobile-ddde5301.js.map

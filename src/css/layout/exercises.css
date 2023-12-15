@@ -62,7 +62,8 @@
   width: 100%;
 }
 
-.exercises_content {
+.exercises_content,
+.category_content {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
@@ -83,6 +84,12 @@
   background-color: var(--color-white-secondary);
   padding: 16px;
   border-radius: 15px;
+}
+
+.category-item {
+  width: 225px;
+  height: 225px;
+  background-image: ur;
 }
 
 .exercise-card-header {
@@ -163,6 +170,11 @@
   .exercises_content {
     grid-template-columns: 1fr 1fr;
     gap: 32px 16px;
+  }
+
+  .category_content {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px 15px;
   }
 
   .exercises_content:has(.empty-exercises) {

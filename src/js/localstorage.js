@@ -20,17 +20,17 @@ const LSLIST = 'FavoriteExercises';
 // Запис Favorite exercise в LS
 // Очікуємо id exercise якщо не знаходимо в списку з LS об'єкта з
 // таким-же id то отримуємо об'єкт та додаємо його в LS
-const addToFavoritesBtn = document.querySelector('.add-to-favourite');
+// const addToFavoritesBtn = document.querySelector('.add-to-favourite');
 
-addToFavoritesBtn.addEventListener('click', () => {
-  const id = addToFavoritesBtn.getAttribute('data-id');
-  let favouriteExercises = getFavouriteExercises();
-  if (!favouriteExercises.some(item => item._id === id)) {
-    const newItem = favoriteItem; /// ДОДАТИ ЗАПИТ НА ОБЪЕКТ ПО _id !!!!
-    favouriteExercises.push(newItem);
-    localStorage.setItem(LSLIST, JSON.stringify(favouriteExercises));
-  }
-});
+// addToFavoritesBtn.addEventListener('click', () => {
+//   const id = addToFavoritesBtn.getAttribute('data-id');
+//   let favouriteExercises = getFavouriteExercises();
+//   if (!favouriteExercises.some(item => item._id === id)) {
+//     const newItem = favoriteItem; /// ДОДАТИ ЗАПИТ НА ОБЪЕКТ ПО _id !!!!
+//     favouriteExercises.push(newItem);
+//     localStorage.setItem(LSLIST, JSON.stringify(favouriteExercises));
+//   }
+// });
 
 // Получити список карток та додати обробку клік
 document.querySelectorAll('.remove-from-favourite').forEach(button => {
@@ -41,7 +41,7 @@ document.querySelectorAll('.remove-from-favourite').forEach(button => {
 });
 
 // Видалення Favorite exercise з LS за _id
-function removeFromFavourite(id) {
+export function removeFromFavourite(id) {
   let favouriteExercises = getFavouriteExercises();
   favouriteExercises = favouriteExercises.filter(item => item._id !== id);
   localStorage.setItem(LSLIST, JSON.stringify(favouriteExercises));
@@ -54,9 +54,9 @@ function getFavouriteExercises() {
 }
 
 // Перевірка списка favorites чи е обʼєкт за id
-function checkFavouriteExercises(id) {
+export function checkFavouriteExercises(id) {
   let favouriteExercises = getFavouriteExercises();
-  result = favouriteExercises.some(item => item._id === id);
+  const result = favouriteExercises.some(item => item._id === id);
   // Повертаемо TRUE якщо знайшли обʼєкт за ID у LocalStorage
   console.log('Obj already exist - ', result);
   return result;

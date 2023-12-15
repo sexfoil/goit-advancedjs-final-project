@@ -1,5 +1,16 @@
 import path from './property/url';
 import { getData } from './api';
+import { checkFavouriteExercises, removeFromFavourite } from './localstorage';
+
+const favouriteBtn = document.querySelector('.favourite-btn');
+const modal = document.querySelector('.modal-exercise');
+const exerciseId = modal.dataset.exerciseId;
+
+favouriteBtn.addEventListener('click', handleFovouriteExercise);
+
+if (checkFavouriteExercises(exerciseId)) {
+  favouriteBtn.innerHTML = 'Remove from favourites';
+}
 
 export async function fillExerciseModal(exerciseId) {
   const dataCellNames = {
@@ -75,5 +86,15 @@ export async function fillExerciseModal(exerciseId) {
       star.style.fill = 'url(#linear-gradient)';
       break;
     }
+  }
+}
+
+function handleFovouriteExercise(event) {
+  event.stopPropagation();
+
+  if (checkFavouriteExercises(exerciseId)) {
+    removeFromFavourite(exerciseId);
+  } else {
+    console.log(1);
   }
 }

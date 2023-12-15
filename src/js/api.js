@@ -14,8 +14,7 @@ export async function getExercisesByCategory(
     .then(result => result.data)
     .catch(err => err);
 }
-// https://your-energy.b.goit.study/api/filters?filter=Muscles&page=1&limit=12
-// https://your-energy.b.goit.study/api/filters?filter=Muscles&page=1&limit=12
+
 function getParameters(template) {
   return new URLSearchParams(template);
 }

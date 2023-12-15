@@ -89,7 +89,12 @@
 .category-item {
   width: 225px;
   height: 225px;
-  background-image: ur;
+  border: 1px solid tomato;
+  border-radius: 12px;
+  background-image: url('../img/banner-m.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 .exercise-card-header {

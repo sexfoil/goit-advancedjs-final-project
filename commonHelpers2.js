@@ -1,0 +1,2 @@
+import"./assets/styles-8106555d.js";import{a as o}from"./assets/vendor-a61d8330.js";const a={BASE_URL:"https://your-energy.b.goit.study/api",EXERCISES:"/exercises",FILTERS:"/filters",QUOTE:"/quote",SUBSCRIPTION:"/subscription",RATING:"/rating"};async function r(t){return o.get(i(t)).then(e=>e.data).catch(e=>e)}function i(t){return a.BASE_URL+a.EXERCISES+`/${t}`}const n=await r("64f389465ae26083f39b17a2");console.log(n);
+//# sourceMappingURL=commonHelpers2.js.map

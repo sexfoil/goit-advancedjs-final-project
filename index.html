@@ -18,21 +18,80 @@
       }
     </style>
     <script type="module" crossorigin src="/goit-advancedjs-final-project/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-advancedjs-final-project/assets/styles-61293211.js">
+    <link rel="modulepreload" crossorigin href="/goit-advancedjs-final-project/assets/mobile-9673c410.js">
     <link rel="modulepreload" crossorigin href="/goit-advancedjs-final-project/assets/vendor-a61d8330.js">
-    <link rel="stylesheet" href="/goit-advancedjs-final-project/assets/styles-f2257081.css">
+    <link rel="stylesheet" href="/goit-advancedjs-final-project/assets/mobile-f84146e4.css">
   </head>
   <body>
     <header class="header">
   <div class="container">
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a href="./index.html" class="nav-link">IT WILL BE A HEADER</a>
-          <a href="./favorites.html" class="nav-link">favorites</a>
+    <div class="header_wraper">
+      <a href="./index.html" class="header_logo">
+        <svg class="header_logo-icon" width="132" height="24">
+          <use href="/goit-advancedjs-final-project/assets/icons-0e027260.svg#icon-logo"></use>
+        </svg>
+      </a>
+
+      <button
+        class="page-header-menu-button js-open-menu"
+        type="button"
+        id="mobile-menu-btn"
+        aria-label="Burger Menu"
+      >
+        <div class="burger-menu">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </button>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item nav-item_home active">
+            <a href="./index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item nav-item_favorites">
+            <a href="./favorites.html" class="nav-link">Favorites</a>
+          </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li class="social-item">
+          <a
+            href="https://www.facebook.com/goITclub/"
+            class="social-link"
+            target="_blank"
+          >
+            <svg class="social_icon" width="28" height="28">
+              <use href="/goit-advancedjs-final-project/assets/icons-0e027260.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="social-item">
+          <a
+            href="https://www.instagram.com/goitclub/ "
+            class="social-link"
+            target="_blank"
+          >
+            <svg class="social_icon" width="28" height="28">
+              <use href="/goit-advancedjs-final-project/assets/icons-0e027260.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="social-item">
+          <a
+            href="https://www.youtube.com/c/GoIT"
+            class="social-link"
+            target="_blank"
+          >
+            <svg class="social_icon" width="28" height="28">
+              <use href="/goit-advancedjs-final-project/assets/icons-0e027260.svg#icon-youtube"></use>
+            </svg>
+          </a>
         </li>
       </ul>
-    </nav>
+    </div>
   </div>
 </header>
 
@@ -212,6 +271,97 @@
 </footer>
 
 
+    <div class="overlay js-menu-overlay">
+  <div class="mobile-menu-container mobile-menu js-menu-container">
+    <button
+      class="mobile-menu-close-button js-close-menu"
+      type="button"
+      id="close-btn"
+      aria-label="Close"
+    >
+      <svg
+        class="mobile-menu-close-button-icon mobile-menu-close-button-icon-mobile"
+        width="32"
+        height="32"
+      >
+        <use href="/goit-advancedjs-final-project/assets/icons-0e027260.svg#icon-x"></use>
+      </svg>
+      <svg
+        class="mobile-menu-close-button-icon mobile-menu-close-button-icon-tablet"
+        width="40"
+        height="40"
+      >
+        <use href="/goit-advancedjs-final-project/assets/icons-0e027260.svg#icon-x"></use>
+      </svg>
+    </button>
+    <nav class="mobile-menu-nav">
+      <ul class="mobile-menu-nav-list">
+        <li class="mobile-menu-nav-item">
+          <a
+            class="mobile-menu-nav-link text-link scrollto"
+            href="./index.html"
+          >
+            Home
+          </a>
+        </li>
+        <li class="mobile-menu-nav-item">
+          <a
+            class="mobile-menu-nav-link text-link scrollto"
+            href="./favorites.html"
+          >
+            Favorites
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <ul class="mobile-menu-social-list">
+      <li class="mobile-menu-social-item">
+        <a
+          class="mobile-menu-social-link"
+          href="https://www.facebook.com/goITclub/"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          <svg class="mobile-menu-social-icon" width="28" height="28">
+            <use href="/goit-advancedjs-final-project/assets/icons-0e027260.svg#icon-facebook"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="mobile-menu-social-item">
+        <a
+          class="mobile-menu-social-link"
+          href="https://www.instagram.com/goitclub/"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          <svg class="mobile-menu-social-icon" width="28" height="28">
+            <use href="/goit-advancedjs-final-project/assets/icons-0e027260.svg#icon-instagram"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="mobile-menu-social-item">
+        <a
+          class="mobile-menu-social-link"
+          href="https://www.youtube.com/c/GoIT"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          <svg class="mobile-menu-social-icon" width="28" height="28">
+            <use href="/goit-advancedjs-final-project/assets/icons-0e027260.svg#icon-youtube"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/body-scroll-lock/3.1.5/bodyScrollLock.min.js"
+  integrity="sha512-HowizSDbQl7UPEAsPnvJHlQsnBmU2YMrv7KkTBulTLEGz9chfBoWYyZJL+MUO6p/yBuuMO/8jI7O29YRZ2uBlA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+
+
     <div class="overlay display-none-js">
       <div class="modal modal-exercise">
   <div class="video-wrapper">
@@ -277,6 +427,7 @@
 
     </div>
 
+    
     
   </body>
 </html>

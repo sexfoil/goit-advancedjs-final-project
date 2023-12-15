@@ -1,9 +1,105 @@
-<footer class="footer">
-  <nav class="nav">
-    <ul class="nav-list">
-      <li class="nav-item">
-        <a href="./index.html" class="nav-link">IT WILL BE A FOOTER</a>
-      </li>
-    </ul>
-  </nav>
+<footer class="footer" id="footer">
+  <div class="page-footer-container container">
+    <div class="page-footer-content">
+      <div class="footer-logo-and-social">
+        <a href="./index.html">
+          <svg class="footer-logo" width="132" height="24">
+            <use href="./img/icons.svg#icon-logo"></use>
+          </svg>
+        </a>
+        <ul class="footer-social-list">
+          <li class="footer-social-item">
+            <a
+              class="footer-social-link"
+              href="https://www.facebook.com/goITclub/"
+              rel="noreferrer noopener"
+              target="_blank"
+              ><span class="visually-hidden">Facebook</span>
+              <svg class="footer-social-icon" width="28" height="28">
+                <use href="./img/icons.svg#icon-facebook"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="footer-social-item">
+            <a
+              class="footer-social-link"
+              href="https://www.instagram.com/goitclub/"
+              rel="noreferrer noopener"
+              target="_blank"
+              ><span class="visually-hidden">Instagram</span>
+              <svg class="footer-social-icon" width="28" height="28">
+                <use href="./img/icons.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="footer-social-item">
+            <a
+              class="footer-social-link"
+              href="https://www.youtube.com/c/GoIT"
+              rel="noreferrer noopener"
+              target="_blank"
+              ><span class="visually-hidden">Youtube</span>
+              <svg class="footer-social-icon" width="28" height="28">
+                <use href="./img/icons.svg#icon-youtube"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-slogan-and-form">
+        <p class="footer-slogan">
+          Transforming your
+          <span class="footer-slogan-accent">body</span> shape with us
+        </p>
+        <div class="footer-subscribe">
+          <p class="footer-form-title">
+            Subscribe and learn about new exercises!
+          </p>
+          <form class="footer-subscribe-form">
+            <label for="subscriber-email"></label>
+            <div class="input-with-loader">
+              <input
+                class="footer-subscribe-form-input"
+                id="subscriber-email"
+                type="email"
+                name="subscriber-email"
+                pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                placeholder="Email"
+                required
+              />
+              <span class="input-loader display-none-js"></span>
+            </div>
+            <button class="footer-subscribe-form-button" type="submit">
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-bottom-left">Your Energy. All rights reserved.</p>
+      <div class="footer-bottom-right">
+        <div class="footer-legal-links">
+          <a
+            class="footer-legal-link"
+            href="https://goit.global/ua/privacy-policy/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Privacy Policy </a
+          >&nbsp;/&nbsp;<a
+            class="footer-legal-link"
+            href="https://goit.global/ua/terms-of-use/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Terms of Service
+          </a>
+        </div>
+        <p class="footer-copyright">&copy;2023</p>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./js/footer.js"></script>
 </footer>

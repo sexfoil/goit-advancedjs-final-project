@@ -4,6 +4,8 @@
     --color-yellow: #eea10c;
     --color-white: #f4f4f4;
     --color-white-secondary: #ffffff;
+  --color-white-transparent: rgba(244, 244, 244, 0.1);
+  --color-gray: #c6cdd1;
 
     --font-primary: "DMSans", sans-serif;
     --font-weight-primary-regular: 400;

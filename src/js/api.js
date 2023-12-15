@@ -5,7 +5,7 @@ function getExercisesByCategory(page = 1, limit = 12, filter = 'Muscles') {
   const params = { filter, page, limit };
   const fullUrl = getUrl(url.FILTERS, getParameters(params));
 
-  return requestGetMethod(fullUrl);
+  return requestGET(fullUrl);
 }
 
 function getExercisesByKeyword(
@@ -23,40 +23,55 @@ function getExercisesByKeyword(
   params[category] = categoryName;
   const fullUrl = getUrl(url.EXERCISES, getParameters(params));
 
-  return requestGetMethod(fullUrl);
+  return requestGET(fullUrl);
 }
 
 function getQuote() {
-  return requestGetMethod(getUrl(url.QUOTE));
+  return requestGET(getUrl(url.QUOTE));
 }
 
 function getExerciseById(id) {
   const fullUrl = getUrl(url.EXERCISES) + `/${id}`;
 
-  return requestGetMethod(fullUrl);
+  return requestGET(fullUrl);
 }
 
 async function subscribe(email) {
-  const response = await axios.post(url.BASE_URL + url.SUBSCRIPTION, {
-    email: email,
-  });
+  const fullUrl = getUrl(url.SUBSCRIPTION);
+  const requestBody = { email };
 
-  return response.data;
+  return requestPOST(fullUrl, requestBody);
 }
 
-function rateExercise() {
-  return;
+function rateExercise(id, rate = 0, email = '', review = '') {
+  const fullUrl = getUrl(url.EXERCISES) + `/${id}${url.RATING}`;
+  const requestBody = { rate, email, review };
+  return requestPATCH(fullUrl, requestBody);
 }
 
-async function requestGetMethod(url) {
+async function requestGET(url) {
   return axios
     .get(url)
     .then(result => result.data)
-    .catch(err => err);
+    .catch(err => err.response);
 }
 
-function getParameters(template) {
-  return new URLSearchParams(template);
+async function requestPOST(url, body) {
+  return axios
+    .post(url, body)
+    .then(result => result)
+    .catch(err => err.response);
+}
+
+async function requestPATCH(url, body) {
+  return axios
+    .patch(url, body)
+    .then(result => result)
+    .catch(err => err.response);
+}
+
+function getParameters(parameters) {
+  return new URLSearchParams(parameters);
 }
 
 function getUrl(endpoint, params) {

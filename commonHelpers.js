@@ -1,4 +1,4 @@
-import"./assets/styles-8106555d.js";const u={EMPTY_FAVORITES:"It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.",EMPTY_QUOTE:"There is no quote"};function r(e){return e?e.charAt(0).toUpperCase()+e.slice(1):""}function v(e){return e.length?e.map(({_id:a,name:s,bodyPart:n,burnedCalories:c,time:d,target:l})=>`
+import"./assets/styles-61293211.js";const u={EMPTY_FAVORITES:"It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.",EMPTY_QUOTE:"There is no quote"};function r(e){return e?e.charAt(0).toUpperCase()+e.slice(1):""}function v(e){return e.length?e.map(({_id:a,name:s,bodyPart:n,burnedCalories:c,time:d,target:l})=>`
             <li class="exercises_item" id="${a}">
                 <div class="exercise-card-header">
                     <div class="card-workout">

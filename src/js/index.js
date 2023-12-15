@@ -1,20 +1,20 @@
-import { getExercises, getExercisesName, getExercisId, getQuoteOfTheDay, patchExercisReting, postSubscriptions } from "./api";
+import { getExercises, getExercisesByName, getExercisById, getQuoteOfTheDay, updateExercisReting, postSubscriptions } from "./api-service";
 
 // приклад отримання вправ(Exercises)
 // console.log(await getExercises("Muscles", 1));
 
 // приклад отримання перелику вправ за ключовим словом
-// console.log(await getExercisesName("back", "","","barbell", 1));
+// console.log(await getExercisesByName("back", "","","barbell", 1));
 
 // приклад отримання детальної інформації про вправу(по id)
-// console.log(await getExercisId("64f389465ae26083f39b17c2"));
+// console.log(await getExercisById("64f389465ae26083f39b17c2"));
 
 // приклад отримання цитати дня
 // console.log(await getQuoteOfTheDay());
 
 
 // приклад додавання рейтингу окремій вправі
-// console.log(await patchExercisReting("64f389465ae26083f39b17a4", 5, "my@gmail.com", "My best exercise"))
+// console.log(await updateExercisReting("64f389465ae26083f39b17a4", 5, "my@gmail.com", "My best exercise"))
 
 // приклад оформлення підписки на розсилку нових вправ
 // console.log(await postSubscriptions("my@gmail.com"))

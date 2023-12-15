@@ -37,7 +37,7 @@ export async function fillExerciseModal(exerciseId) {
   }
 
   elements.title.innerHTML = name;
-  elements.rating.innerHTML = rating;
+  elements.rating.innerHTML = `${Number(rating).toFixed(1)}`;
   elements.description.innerHTML = description;
 
   for (let dataCellName of Object.keys(dataCellNames)) {
@@ -51,6 +51,29 @@ export async function fillExerciseModal(exerciseId) {
           </div>
         `
       );
+    }
+  }
+
+  const stars = document.querySelectorAll('.modal-exercise .star-icon');
+  let starsCounter = 0;
+
+  for (let star of stars) {
+    if (rating - starsCounter > 1) {
+      star.style.fill = '#eea10c';
+      starsCounter++;
+    } else {
+      const breakPoint = (rating - starsCounter) * 100;
+      star.insertAdjacentHTML(
+        'afterbegin',
+        `
+          <linearGradient id="linear-gradient">
+            <stop offset="${breakPoint}%" stop-color="#eea10c"/>
+            <stop offset="${breakPoint}%" stop-color="rgba(244, 244, 244, 0.2)"/>
+          </linearGradient>
+        `
+      );
+      star.style.fill = 'url(#linear-gradient)';
+      break;
     }
   }
 }

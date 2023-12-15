@@ -15,3 +15,11 @@ export default async function getExerciseById(id) {
 function getUrl(id) {
     return url.BASE_URL + url.EXERCISES + `/${id}`;
 }
+
+export async function postSubscription(email) {
+  const response = await axios.post(url.BASE_URL + url.SUBSCRIPTION, {
+    email: email,
+  });
+
+  return response.data;
+}

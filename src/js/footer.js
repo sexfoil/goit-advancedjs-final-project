@@ -1,4 +1,4 @@
-import { postSubscription } from './api.js';
+import { subscribe } from './api.js';
 import {
   isWhitespacesOrEmpty,
   displayWarning,
@@ -31,7 +31,7 @@ function onSubscriptionFormSubmit(evt) {
 async function sendSubscriptionRequest(email) {
   try {
     loader.show();
-    const responseData = await postSubscription(email);
+    const responseData = await subscribe(email);
     displayInfo(responseData.message);
   } catch (error) {
     if (error.response) {

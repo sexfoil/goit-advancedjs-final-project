@@ -1,4 +1,4 @@
-import { text } from '../property/text';
+import { text } from '../property/constants';
 import { capitalize } from './text-modifier';
 
 export function getExerciseCardHtml(exercises) {

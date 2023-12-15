@@ -1,5 +1,5 @@
 /// FAKE EXERCISE
-const favoriteItem = {
+export const favoriteItem = {
   _id: '64f389465ae26083f39b17c2',
   bodyPart: 'back',
   equipment: 'barbell',

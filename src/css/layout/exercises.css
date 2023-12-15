@@ -57,7 +57,6 @@
 .time-text {
   margin-top: 15px;
 }
-/* done */
 
 .exercises_content-wrap {
   width: 100%;
@@ -69,6 +68,11 @@
   gap: 20px;
 }
 
+.empty-exercises {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 46px;
+}
 
 /* 
   EXERCISE_CARD CSS
@@ -125,12 +129,13 @@
 
 .card-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .info-item-name {
   color: #36363640;
 }
+
 
 @media screen and (min-width: 768px) {
   .exercises_wrap {
@@ -158,7 +163,19 @@
   .exercises_content {
     grid-template-columns: 1fr 1fr;
     gap: 32px 16px;
-  }  
+  }
+
+  .exercises_content:has(.empty-exercises) {
+    grid-template-columns: 1fr;
+  }
+
+  .empty-exercises {
+    width: 100%;
+    font-size: 18px;
+    padding: 0 75px;
+    font-size: 18px;
+    line-height: 133%;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -173,6 +190,12 @@
   .exercises_content-wrap {
     width: calc(100% - 534px);
   }
+
+  .empty-exercises {
+    font-size: 18px;
+    padding: 0 140px;
+    margin-top: 114px;
+  }  
 }
 
 @media screen and (max-width: 767px) {

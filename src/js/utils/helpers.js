@@ -1,23 +1,38 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
+function displaySuccess(message, title = '') {
+  iziToast.success({
+    title,
+    message,
+  });
+}
+
+function displayError(message, title = '') {
+  iziToast.error({
+    title,
+    message,
+  });
+}
+
+function displayWarning(message, title = '') {
+  iziToast.warning({
+    title,
+    message,
+  });
+}
+
+function displayInfo(message, title = '') {
+  iziToast.info({
+    title,
+    message,
+  });
+}
+
 const isWhitespacesOrEmpty = input => {
   const regexPattern = /[^ \t\r\n\v\f]/;
   return !regexPattern.test(input);
 };
-
-function displaySuccess(message, title = '') {
-  alert(message);
-}
-
-function displayError(message, title = '') {
-  alert(message);
-}
-
-function displayWarning(message, title = '') {
-  alert(message);
-}
-
-function displayInfo(message, title = '') {
-  alert(message);
-}
 
 class HideableElement {
   constructor(element, visibleClass, hiddenClass = 'display-none-js') {

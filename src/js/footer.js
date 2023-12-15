@@ -43,9 +43,6 @@ async function sendSubscriptionRequest(email) {
           break;
 
         default: {
-          //   console.log(
-          //     `postSubscription error status: ${error.response.status}.`
-          //   );
         }
       }
     }

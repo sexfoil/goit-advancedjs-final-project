@@ -1,5 +1,47 @@
+// Назва ключа в LocalStorage
+const LS_KEY = 'FavoriteExercises';
+
+// Запис Favorite exercise в LS
+// Очікуємо об'єкт exercise якщо не знаходимо в LS об'єкта з
+// таким-же id  додаємо об'єкт в LS
+function addToFavorites(newItem) {
+  let favoriteExercises = getFavoriteExercises();
+  const id = newItem._id;
+  if (!favoriteExercises.some(item => item._id === id)) {
+    const newItem = favoriteItem;
+    favoriteExercises.push(newItem);
+    localStorage.setItem(LS_KEY, JSON.stringify(favoriteExercises));
+  }
+}
+
+// Видалення Favorite exercise з LS за _id
+function removeFromFavorite(id) {
+  let favoriteExercises = getFavoriteExercises();
+  favoriteExercises = favoriteExercises.filter(item => item._id !== id);
+  localStorage.setItem(LS_KEY, JSON.stringify(favoriteExercises));
+  displayFavorites(); // Оновлення сторінки
+}
+
+// Получити список favorites з LS або []
+function getFavoriteExercises() {
+  return JSON.parse(localStorage.getItem(LS_KEY)) || [];
+}
+
+// Перевірка списка favorites чи е обʼєкт за id
+function checkFavoriteExercises(id) {
+  let favoriteExercises = getFavoriteExercises();
+  result = favoriteExercises.some(item => item._id === id);
+  return result;
+}
+
+function displayFavorites() {
+  const favoriteExercises = getFavoriteExercises();
+  console.log(favoriteExercises);
+  // Відмалювати Favorites Page
+}
+
 /// FAKE EXERCISE
-export const favoriteItem = {
+const favoriteItem = {
   _id: '64f389465ae26083f39b17c2',
   bodyPart: 'back',
   equipment: 'barbell',
@@ -14,56 +56,27 @@ export const favoriteItem = {
   popularity: 7415,
 };
 
-// Назва ключа в LocalStorage
-const LSLIST = 'FavoriteExercises';
-
-// Запис Favorite exercise в LS
-// Очікуємо id exercise якщо не знаходимо в списку з LS об'єкта з
-// таким-же id то отримуємо об'єкт та додаємо його в LS
 // const addToFavoritesBtn = document.querySelector('.add-to-favourite');
-
 // addToFavoritesBtn.addEventListener('click', () => {
 //   const id = addToFavoritesBtn.getAttribute('data-id');
-//   let favouriteExercises = getFavouriteExercises();
-//   if (!favouriteExercises.some(item => item._id === id)) {
+//   let favoriteExercises = favoriteExercises();
+//   if (!favoriteExercises.some(item => item._id === id)) {
 //     const newItem = favoriteItem; /// ДОДАТИ ЗАПИТ НА ОБЪЕКТ ПО _id !!!!
-//     favouriteExercises.push(newItem);
-//     localStorage.setItem(LSLIST, JSON.stringify(favouriteExercises));
+//     favoriteExercises.push(newItem);
+//     localStorage.setItem(LS_KEY, JSON.stringify(favoriteExercises));
 //   }
 // });
 
-// Получити список карток та додати обробку клік
-document.querySelectorAll('.remove-from-favourite').forEach(button => {
-  button.addEventListener('click', () => {
-    const id = button.getAttribute('data-id');
-    removeFromFavourite(id);
-  });
-});
+// document.querySelectorAll('.remove-from-favourite').forEach(button => {
+//   button.addEventListener('click', () => {
+//     const id = button.getAttribute('data-id');
+//     removeFromFavorite(id);
+//   });
+// });
 
-// Видалення Favorite exercise з LS за _id
-function removeFromFavourite(id) {
-  let favouriteExercises = getFavouriteExercises();
-  favouriteExercises = favouriteExercises.filter(item => item._id !== id);
-  localStorage.setItem(LSLIST, JSON.stringify(favouriteExercises));
-  displayFavourites(); // Оновлення сторінки
-}
-
-// Получити список favorites з LS або []
-function getFavouriteExercises() {
-  return JSON.parse(localStorage.getItem(LSLIST)) || [];
-}
-
-// Перевірка списка favorites чи е обʼєкт за id
-function checkFavouriteExercises(id) {
-  let favouriteExercises = getFavouriteExercises();
-  result = favouriteExercises.some(item => item._id === id);
-  // Повертаемо TRUE якщо знайшли обʼєкт за ID у LocalStorage
-  console.log('Obj already exist - ', result);
-  return result;
-}
-
-function displayFavourites() {
-  const favouriteExercises = getFavouriteExercises();
-  console.log(favouriteExercises);
-  // Відмалювати Favorites Page
-}
+export {
+  favoriteItem,
+  addToFavorites,
+  removeFromFavorite,
+  checkFavoriteExercises,
+};

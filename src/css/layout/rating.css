@@ -1,0 +1,44 @@
+/* Стилі для закрашених зірок */
+.star-icon {
+    fill: none;
+    stroke: #ffd700;
+    stroke-width: 2;
+    transition: fill 0.3s;
+}
+
+.star-icon.filled {
+    fill: #ffd700;
+}
+/* New styles for gradient on the last star */
+.star-icon.filled {
+    fill: #ffd700;
+}
+
+.rating-modal .rating-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.rating-modal .rating-wrapper label {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid #ffd700;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.rating-modal .rating-wrapper label:hover,
+.rating-modal .rating-wrapper label:active {
+    background-color: #ffd700;
+}
+
+.rating-modal .rating-wrapper input:checked+label {
+    background-color: #ffd700;
+}
+
+.rating-modal .rating-wrapper label:last-child {
+    background: linear-gradient(90deg, #ffd700 0%, #ffd700 0%);
+}

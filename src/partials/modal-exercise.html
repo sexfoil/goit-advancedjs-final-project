@@ -56,6 +56,27 @@
       posture, stability, and generating force in many movements. Exercises that
       target the abs include crunches, leg raises, and planks.
     </p>
-    <div class="buttons-wrapper"></div>
+    <div class="buttons-wrapper">
+      <button class="open-rating-modal-btn">Give a rating</button>
+    </div>
   </div>
+</div>
+<!-- Modal for Rating -->
+<div class="modal rating-modal">
+  <h2 class="title">Rate this exercise</h2>
+  <form id="rating-form">
+    <div class="rating-wrapper">
+      <input type="radio" name="rating" value="1" id="star1"><label for="star1"></label>
+      <input type="radio" name="rating" value="2" id="star2"><label for="star2"></label>
+      <input type="radio" name="rating" value="3" id="star3"><label for="star3"></label>
+      <input type="radio" name="rating" value="4" id="star4"><label for="star4"></label>
+      <input type="radio" name="rating" value="5" id="star5"><label for="star5"></label>
+    </div>
+    <div class="description-wrapper">
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
+    </div>
+    <button type="submit" class="submit-rating-btn">Send</button>
+    <button type="button" class="close-rating-modal-btn">Close</button>
+  </form>
 </div>

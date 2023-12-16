@@ -16,25 +16,29 @@ export const favoriteBtnContent = {
   `,
 };
 
+let elements;
+
 export async function fillExerciseModal(exerciseId) {
   const dataCellNames = {
-    bodyPart: 'Body Part',
-    burnedCalories: 'Burned Calories',
+    bodyPart: 'Body part',
+    burnedCalories: 'Burned calories',
     equipment: 'Equipment',
     popularity: 'Popularity',
     target: 'Target',
     time: 'Time',
   };
 
-  const elements = {
+  elements = {
     modal: document.querySelector('.modal-exercise'),
     loader: document.querySelector('.modal-exercise .loader'),
-    modalContent: document.querySelector('.modal-content'),
+    modalContent: document.querySelector('.modal-exercise .modal-content'),
+    imageWrapper: document.querySelector('.modal-exercise .image-wrapper'),
     title: document.querySelector('.modal-exercise .title'),
     rating: document.querySelector('.modal-exercise .rating'),
+    ratingStars: document.querySelectorAll('.modal-exercise .star-icon'),
     dataWrapper: document.querySelector('.modal-exercise .data-wrapper'),
     description: document.querySelector('.modal-exercise .description'),
-    favoriteBtn: document.querySelector('.favorite-btn'),
+    favoriteBtn: document.querySelector('.modal-exercise .favorite-btn'),
   };
 
   elements.modal.setAttribute('data-exercise-id', exerciseId);
@@ -44,14 +48,7 @@ export async function fillExerciseModal(exerciseId) {
   const { description, name, rating, gifUrl } = data;
 
   if (gifUrl) {
-    elements.modalContent.insertAdjacentHTML(
-      'afterbegin',
-      `
-        <div class="image-wrapper">
-          <image class="image" src="${gifUrl}" alt="${name}" />
-        </div>
-      `
-    );
+    elements.imageWrapper.innerHTML = `<img class="image" src="${gifUrl}" alt="${name}" />`;
   }
 
   elements.title.innerHTML = name;
@@ -75,10 +72,9 @@ export async function fillExerciseModal(exerciseId) {
     }
   }
 
-  const stars = document.querySelectorAll('.modal-exercise .star-icon');
   let starsCounter = 0;
 
-  for (let star of stars) {
+  for (let star of elements.ratingStars) {
     if (rating - starsCounter > 1) {
       star.style.fill = '#eea10c';
       starsCounter++;
@@ -102,23 +98,11 @@ export async function fillExerciseModal(exerciseId) {
   elements.loader.classList.add('display-none-js');
 }
 
-export async function clearExerciseModal() {
-  const elements = {
-    modal: document.querySelector('.modal-exercise'),
-    loader: document.querySelector('.modal-exercise .loader'),
-    modalContent: document.querySelector('.modal-content'),
-    imageWrapper: document.querySelector('.modal-exercise .image-wrapper'),
-    title: document.querySelector('.modal-exercise .title'),
-    rating: document.querySelector('.modal-exercise .rating'),
-    dataWrapper: document.querySelector('.modal-exercise .data-wrapper'),
-    description: document.querySelector('.modal-exercise .description'),
-    favoriteBtn: document.querySelector('.favorite-btn'),
-  };
-
+export function clearExerciseModal() {
   elements.modal.removeAttribute('data-exercise-id');
 
   if (elements.imageWrapper) {
-    elements.imageWrapper.remove();
+    elements.imageWrapper.innerHTML = '';
   }
 
   elements.title.innerHTML = '';

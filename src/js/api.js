@@ -26,8 +26,12 @@ function getExercisesByKeyword(
   return requestGET(fullUrl);
 }
 
-function getQuote() {
-  return requestGET(getUrl(url.QUOTE));
+// function getQuote() {
+//   return requestGET(getUrl(url.QUOTE));
+// }
+
+export async function getQuote() {
+  return await axios.get(`${url.BASE_URL + url.QUOTE}`).then(response => response.data);
 }
 
 function getExerciseById(id) {

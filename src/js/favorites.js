@@ -1,4 +1,4 @@
-import { getExerciseCardHtml } from './utils/html-render';
+import { getFavoritesCardHtml } from './utils/html-render';
 import {
   favoriteItem,
   checkFavoriteExercises,
@@ -23,12 +23,8 @@ const arr = [
   favoriteItem,
   favoriteItem,
   favoriteItem,
-  favoriteItem,
-  favoriteItem,
-  favoriteItem,
-  favoriteItem,
 ];
-favorites.innerHTML = getExerciseCardHtml(arr);
+favorites.innerHTML = getFavoritesCardHtml(arr, 'Equipment', 'barbell');
 // document.querySelectorAll('.exercises_item').forEach(item => {
 //   item.addEventListener('click', showExerciseModal);
 // });

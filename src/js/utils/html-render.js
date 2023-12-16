@@ -20,13 +20,23 @@ const svg = {
         <use href="./img/icons.svg#icon-running-stick"></use>
     </svg>`,
 };
-
-export function getExerciseCardHtml(exercises, isFavorites = false) {
-  if (!exercises.length) {
+export function getFavoritesCardHtml(favorites, category, categoryName) {
+  if (!favorites.length) {
     return `<li class="empty-exercises usual-text">${text.EMPTY_FAVORITES}</li>`;
   }
-  return exercises
-    .map(({ _id, name, bodyPart, burnedCalories, time, target, rating }) => {
+  return getHtml(favorites, category, categoryName, true);
+}
+
+export function getExerciseCardHtml(exercises, category, categoryName) {
+  if (!exercises.length) {
+    return `<li class="empty-exercises usual-text">${text.EMPTY_SEARCH}</li>`;
+  }
+  return getHtml(exercises, category, categoryName, false);
+}
+
+function getHtml(cards, category, categoryName, isFavorites) {
+  return cards
+    .map(({ _id, name, burnedCalories, time, target, rating }) => {
       return `
             <li class="exercises_item" id="${_id}">
                 <div class="exercise-card-header">
@@ -43,21 +53,28 @@ export function getExerciseCardHtml(exercises, isFavorites = false) {
                         <div class="card-start-arrow">${svg.arrow}</div>
                     </div>
                 </div>
+
                 <div class="card-body">
                     <div class="card-body-logo">${svg.runner}</div>
-                    <div class="card-body-name card-text-name">${capitalize(
-                      name
-                    )}</div>
+                    <div class="card-body-name card-text-name">
+                        ${capitalize(name)}
+                    </div>
                 </div>
 
                 <div class="card-footer">
                     <div class="card-info card-text-info">
                         <span class="info-item-name">Burned calories: </span>
-                        <span class="long-text">${burnedCalories} / ${time} min</span>
-                        <span class="info-item-name">Body part: </span>
-                        <span class="long-text">${capitalize(bodyPart)}</span>
+                        <span class="long-text">
+                            ${burnedCalories} / ${time} min
+                        </span>
+                        <span class="info-item-name">${category}: </span>
+                        <span class="long-text">
+                            ${capitalize(categoryName)}
+                        </span>
                         <span class="info-item-name">Target: </span>
-                        <span class="long-text">${capitalize(target)}</span>
+                        <span class="long-text">
+                            ${capitalize(target)}
+                        </span>
                     </div>
                 </div>
             </li>

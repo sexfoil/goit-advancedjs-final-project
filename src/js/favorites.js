@@ -5,7 +5,11 @@ import {
   addToFavorites,
   removeFromFavorite,
 } from './localstorage';
-import { fillExerciseModal, clearExerciseModal } from './modals';
+import {
+  favoriteBtnContent,
+  fillExerciseModal,
+  clearExerciseModal,
+} from './modals';
 
 const favorites = document.querySelector('.exercises_content');
 let elements;
@@ -29,7 +33,7 @@ function showExerciseModal(event) {
   elements = {
     closeBtn: document.querySelector('#modal-close-button'),
     overlay: document.querySelector('.modal-overlay'),
-    favouriteBtn: document.querySelector('.favourite-btn'),
+    favoriteBtn: document.querySelector('.favorite-btn'),
   };
 
   document.querySelector('.modal-overlay').classList.remove('display-none-js');
@@ -38,7 +42,7 @@ function showExerciseModal(event) {
 
   elements.closeBtn.addEventListener('click', closeExerciseModal);
   elements.overlay.addEventListener('click', closeExerciseModal);
-  elements.favouriteBtn.addEventListener('click', handleFovouriteExercise);
+  elements.favoriteBtn.addEventListener('click', handleFovouriteExercise);
 }
 
 function closeExerciseModal() {
@@ -48,7 +52,7 @@ function closeExerciseModal() {
 
   elements.closeBtn.removeEventListener('click', closeExerciseModal);
   elements.overlay.removeEventListener('click', closeExerciseModal);
-  elements.favouriteBtn.removeEventListener('click', handleFovouriteExercise);
+  elements.favoriteBtn.removeEventListener('click', handleFovouriteExercise);
 }
 
 function handleFovouriteExercise(event) {
@@ -58,11 +62,13 @@ function handleFovouriteExercise(event) {
 
   if (checkFavoriteExercises(exerciseId)) {
     removeFromFavorite(exerciseId);
-    elements.favouriteBtn.innerHTML = 'Add to favorites';
+    elements.favoriteBtn.innerHTML = favoriteBtnContent.add;
   } else {
     addToFavorites(exerciseId);
-    elements.favouriteBtn.innerHTML = 'Remove from favorites';
+    elements.favoriteBtn.innerHTML = favoriteBtnContent.remove;
   }
+
+  elements.favoriteBtn.blur();
 }
 
 exerciseItems.forEach(item => {

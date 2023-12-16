@@ -2,7 +2,7 @@
   width: 100%;
   height: 42px;
   border-radius: 30px;
-  border: none;
+  border: 1px solid transparent;
   background-color: var(--color-white);
   color: var(--color-black);
   font-family: var(--font-primary);
@@ -15,7 +15,27 @@
 
 .common-button:hover,
 .common-button:focus {
-  background-color: var(--color-yellow);
+  border-color: var(--color-white);
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+.favorite-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.favorite-btn-icon {
+  fill: transparent;
+  stroke: var(--color-black);
+}
+
+.favorite-btn:hover .favorite-btn-icon,
+.favorite-btn:active .favorite-btn-icon,
+.favorite-btn:focus .favorite-btn-icon {
+  stroke: var(--color-white);
 }
 
 @media screen and (min-width: 768px) {

@@ -20,22 +20,32 @@ const svg = {
         <use href="./img/icons.svg#icon-running-stick"></use>
     </svg>`,
 };
-
-export function getExerciseCardHtml(exercises, isFavorites = false) {
-  if (!exercises.length) {
+export function getFavoritesCardHtml(favorites, category, categoryName) {
+  if (!favorites.length) {
     return `<li class="empty-exercises usual-text">${text.EMPTY_FAVORITES}</li>`;
   }
-  return exercises
-    .map(({ _id, name, bodyPart, burnedCalories, time, target, rating }) => {
+  return getHtml(favorites, category, categoryName, true);
+}
+
+export function getExerciseCardHtml(exercises, category, categoryName) {
+  if (!exercises.length) {
+    return `<li class="empty-exercises usual-text">${text.EMPTY_SEARCH}</li>`;
+  }
+  return getHtml(exercises, category, categoryName, false);
+}
+
+function getHtml(cards, category, categoryName, isFavorites) {
+  return cards
+    .map(card => {
       return `
-            <li class="exercises_item" id="${_id}">
+            <li class="exercises_item" id="${card._id}">
                 <div class="exercise-card-header">
                     <div class="card-workout">
                         <div class="card-workout-logo card-text-logo">Workout</div>
                         <div class="workout-logo-addon text-usual">${
                           isFavorites
                             ? svg.recycleBin
-                            : svg.rating.replace('RATING', round(rating))
+                            : svg.rating.replace('RATING', round(card.rating))
                         }</div>
                     </div>
                     <div class="card-start">
@@ -45,19 +55,25 @@ export function getExerciseCardHtml(exercises, isFavorites = false) {
                 </div>
                 <div class="card-body">
                     <div class="card-body-logo">${svg.runner}</div>
-                    <div class="card-body-name card-text-name">${capitalize(
-                      name
-                    )}</div>
+                    <div class="card-body-name card-text-name">
+                        ${capitalize(card.name)}
+                    </div>
                 </div>
 
                 <div class="card-footer">
                     <div class="card-info card-text-info">
                         <span class="info-item-name">Burned calories: </span>
-                        <span class="long-text">${burnedCalories} / ${time} min</span>
-                        <span class="info-item-name">Body part: </span>
-                        <span class="long-text">${capitalize(bodyPart)}</span>
+                        <span class="long-text">
+                            ${card.burnedCalories} / ${card.time} min
+                        </span>
+                        <span class="info-item-name">${category}: </span>
+                        <span class="long-text">
+                            ${capitalize(categoryName)}
+                        </span>
                         <span class="info-item-name">Target: </span>
-                        <span class="long-text">${capitalize(target)}</span>
+                        <span class="long-text">
+                            ${capitalize(card.target)}
+                        </span>
                     </div>
                 </div>
             </li>
@@ -90,3 +106,5 @@ export function getCategoryCardHtml(category) {
 function round(num) {
   return Math.round(num * 10) / 10;
 }
+
+function getValueByName(categoryName) {}

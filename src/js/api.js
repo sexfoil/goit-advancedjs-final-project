@@ -4,7 +4,6 @@ import url from './property/url.js';
 function getExercisesByCategory(page = 1, limit = 12, filter = 'Muscles') {
   const params = { filter, page, limit };
   const fullUrl = getUrl(url.FILTERS, getParameters(params));
-  console.log(fullUrl);
 
   return requestGET(fullUrl);
 }
@@ -25,7 +24,6 @@ function getExercisesByKeyword(
     params['keyword'] = keyword;
   }
   const fullUrl = getUrl(url.EXERCISES, getParameters(params));
-  console.log(fullUrl);
 
   return requestGET(fullUrl);
 }

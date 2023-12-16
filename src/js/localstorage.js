@@ -29,9 +29,7 @@ function getFavoriteExercises() {
 
 // Перевірка списка favorites чи е обʼєкт за id
 function checkFavoriteExercises(id) {
-  let favoriteExercises = getFavoriteExercises();
-  result = favoriteExercises.some(item => item._id === id);
-  return result;
+  return getFavoriteExercises().some(item => item._id === id);
 }
 
 function displayFavorites() {

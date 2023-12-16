@@ -36,16 +36,16 @@ export function getExerciseCardHtml(exercises, category, categoryName) {
 
 function getHtml(cards, category, categoryName, isFavorites) {
   return cards
-    .map(card => {
+    .map(({ _id, name, burnedCalories, time, target, rating }) => {
       return `
-            <li class="exercises_item" id="${card._id}">
+            <li class="exercises_item" id="${_id}">
                 <div class="exercise-card-header">
                     <div class="card-workout">
                         <div class="card-workout-logo card-text-logo">Workout</div>
                         <div class="workout-logo-addon text-usual">${
                           isFavorites
                             ? svg.recycleBin
-                            : svg.rating.replace('RATING', round(card.rating))
+                            : svg.rating.replace('RATING', round(rating))
                         }</div>
                     </div>
                     <div class="card-start">
@@ -53,10 +53,11 @@ function getHtml(cards, category, categoryName, isFavorites) {
                         <div class="card-start-arrow">${svg.arrow}</div>
                     </div>
                 </div>
+
                 <div class="card-body">
                     <div class="card-body-logo">${svg.runner}</div>
                     <div class="card-body-name card-text-name">
-                        ${capitalize(card.name)}
+                        ${capitalize(name)}
                     </div>
                 </div>
 
@@ -64,7 +65,7 @@ function getHtml(cards, category, categoryName, isFavorites) {
                     <div class="card-info card-text-info">
                         <span class="info-item-name">Burned calories: </span>
                         <span class="long-text">
-                            ${card.burnedCalories} / ${card.time} min
+                            ${burnedCalories} / ${time} min
                         </span>
                         <span class="info-item-name">${category}: </span>
                         <span class="long-text">
@@ -72,7 +73,7 @@ function getHtml(cards, category, categoryName, isFavorites) {
                         </span>
                         <span class="info-item-name">Target: </span>
                         <span class="long-text">
-                            ${capitalize(card.target)}
+                            ${capitalize(target)}
                         </span>
                     </div>
                 </div>
@@ -106,5 +107,3 @@ export function getCategoryCardHtml(category) {
 function round(num) {
   return Math.round(num * 10) / 10;
 }
-
-function getValueByName(categoryName) {}

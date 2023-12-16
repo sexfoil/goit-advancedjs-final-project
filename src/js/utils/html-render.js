@@ -1,4 +1,4 @@
-import { text } from '../property/constants';
+import { text, attribute } from '../property/constants';
 import { capitalize } from './text-modifier';
 
 export function getExerciseCardHtml(exercises) {
@@ -45,13 +45,16 @@ export function getExerciseCardHtml(exercises) {
 export function getCategoryCardHtml(category) {
   return category
     .map(({ filter, name, imgURL }) => {
+      const dataAttribute = `data-${attribute.DATA_INFO}="${capitalize(
+        filter
+      )}:${name}"`;
       return `
-            <li class="category-item">
-                <div class="category-item-container">
-                    <img class="category-img" src="${imgURL}" alt="${name}" />
-                    <div class="category-text-content">
-                        <h3>${capitalize(name)}</h3>
-                        <p>${capitalize(filter)}</p>
+            <li class="category-item" ${dataAttribute}>
+                <div class="category-item-container" ${dataAttribute}>
+                    <img class="category-img" src="${imgURL}" alt="${name}" ${dataAttribute}/>
+                    <div class="category-text-content" ${dataAttribute}>
+                        <h3 ${dataAttribute}>${capitalize(name)}</h3>
+                        <p  ${dataAttribute}>${capitalize(filter)}</p>
                     </div>
                 </div>
             </li>

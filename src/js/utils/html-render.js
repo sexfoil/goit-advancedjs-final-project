@@ -1,26 +1,50 @@
 import { text, attribute } from '../property/constants';
 import { capitalize } from './text-modifier';
 
-export function getExerciseCardHtml(exercises) {
+const svg = {
+  rating: `
+    <p class="text-usuala">RATING</p>
+    <svg class="card-icon-star" width="18" height="22">
+        <use href="./img/icons.svg#yellow-star"></use>
+    </svg>`,
+  recycleBin: `
+    <svg class="card-icon" width="16" height="16">
+        <use href="./img/icons.svg#icon-remove"></use>
+    </svg>`,
+  arrow: `
+    <svg class="card-icon" width="16" height="16">
+        <use href="./img/icons.svg#icon-arrow"></use>
+    </svg>`,
+  runner: `
+    <svg class="card-icon" width="24" height="24">
+        <use href="./img/icons.svg#icon-running-stick"></use>
+    </svg>`,
+};
+
+export function getExerciseCardHtml(exercises, isFavorites = false) {
   if (!exercises.length) {
     return `<li class="empty-exercises usual-text">${text.EMPTY_FAVORITES}</li>`;
   }
   return exercises
-    .map(({ _id, name, bodyPart, burnedCalories, time, target }) => {
+    .map(({ _id, name, bodyPart, burnedCalories, time, target, rating }) => {
       return `
             <li class="exercises_item" id="${_id}">
                 <div class="exercise-card-header">
                     <div class="card-workout">
                         <div class="card-workout-logo card-text-logo">Workout</div>
-                        <div>🎁</div>
+                        <div class="workout-logo-addon text-usual">${
+                          isFavorites
+                            ? svg.recycleBin
+                            : svg.rating.replace('RATING', round(rating))
+                        }</div>
                     </div>
                     <div class="card-start">
-                        <div class="card-start-name">Start</div>
-                        <div class="card-start-arrow">=></div>
+                        <div class="card-start-name usual-text">Start</div>
+                        <div class="card-start-arrow">${svg.arrow}</div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="card-body-logo">♿</div>
+                    <div class="card-body-logo">${svg.runner}</div>
                     <div class="card-body-name card-text-name">${capitalize(
                       name
                     )}</div>
@@ -61,4 +85,8 @@ export function getCategoryCardHtml(category) {
         `;
     })
     .join('');
+}
+
+function round(num) {
+  return Math.round(num * 10) / 10;
 }

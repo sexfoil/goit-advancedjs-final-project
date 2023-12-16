@@ -72,3 +72,6 @@ console.log(exerciseItems);
 // const h = getExerciseCardHtml([]);
 // console.log(h);
 // favorites.innerHTML = h;
+
+document.querySelector('.nav-item_home').classList.remove('active');
+document.querySelector('.nav-item_favorites').classList.add('active');

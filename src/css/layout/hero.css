@@ -2,29 +2,41 @@
   display: flex;
   flex-direction: column;
 }
+.hero-section {
+  padding-top: 80px;
+}
 
 .hero_top-wrap {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
 .hero_left {
-  width: 640px;
+  /* width: 640px; */
   display: flex;
   flex-direction: column;
 }
+.hero__title-img {
+  margin-right: 15px;
+}
 
 .hero_title {
-  font-size: 60px;
+  font-size: 38px;
+  /* text-align: center; */
+  /* margin-left: 15px; */
+  margin-bottom: 20px;
+  /* font-family: 'DM Sans'; */
 }
 
 .hero_slogan {
-  width: 528px;
+  width: 335px;
 }
 
 .hero_right {
+  display: none;
   width: 200px;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
 }
 
@@ -35,6 +47,8 @@
 }
 
 .hero_banner {
+  margin-top: 20px;
+  margin-bottom: 20px;
   height: 350px;
   background: url(/img/hero-banner.webp) no-repeat;
   border-radius: 60px;
@@ -45,8 +59,76 @@
 .hero_banner-small {
   height: 100px;
   width: 168px;
+  margin-bottom: 32px;
   background: url(/img/banner-small.webp) no-repeat;
   border-radius: 20px;
   background-position: top center;
   background-size: cover;
+}
+.hero_hashtags-item {
+  padding: 4px 12px 4px 12px;
+  border-radius: 30px;
+  border: 1px solid #242424;
+  font-size: 14px;
+}
+@media screen and (min-width: 768px) {
+  .hero_banner {
+    margin-top: 32px;
+    height: 550px;
+  }
+  .hero_slogan {
+    width: 528px;
+  }
+  .hero__title-img {
+    width: 59px;
+    height: 59px;
+  }
+  .hero_title {
+    font-size: 74px;
+    font-weight: 400;
+    line-height: 74px;
+    letter-spacing: -1.48px;
+  }
+  .hero-section {
+    padding-top: 100px;
+  }
+  .hero_hashtags {
+    margin-left: auto;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-laptop-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .laptope {
+    display: none;
+  }
+  .hero_right {
+    display: block;
+  }
+  .hero_banner {
+    margin-top: 32px;
+    height: 550px;
+  }
+  .hero_slogan {
+    width: 528px;
+  }
+  .hero__title-img {
+    width: 59px;
+    height: 59px;
+  }
+  .hero_title {
+    font-size: 74px;
+    font-weight: 400;
+    line-height: 74px;
+    letter-spacing: -1.48px;
+  }
+  .hero-section {
+    padding-top: 100px;
+  }
+  .hero_hashtags {
+    margin-left: auto;
+  }
 }

@@ -13,7 +13,7 @@ function getExercisesByKeyword(
   limit = 10,
   category,
   categoryName,
-  keyword
+  keyword = ''
 ) {
   const params = {
     page,

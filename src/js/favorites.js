@@ -1,5 +1,6 @@
 import { getExerciseCardHtml } from './utils/html-render';
 import { favoriteItem } from './localstorage';
+import './quote.js';
 
 const favorites = document.querySelector('.exercises_content');
 

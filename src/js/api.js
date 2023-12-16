@@ -30,3 +30,7 @@ export async function postSubscription(email) {
 
   return response.data;
 }
+
+export async function getQuote() {
+  return await axios.get(`${url.BASE_URL + url.QUOTE}`).then(response => response.data);
+}

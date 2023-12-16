@@ -1,5 +1,6 @@
 import { getExerciseCardHtml, getCategoryCardHtml } from './utils/html-render';
 import { getExercisesByCategory } from './api.js';
+import './quote.js';
 
 const categoryList = document.querySelector('.category_content');
 

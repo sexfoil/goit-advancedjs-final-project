@@ -5,10 +5,17 @@ import {
   addToFavorites,
   removeFromFavorite,
 } from './localstorage';
-import { fillExerciseModal, clearExerciseModal } from './modals';
+import {
+  favoriteBtnContent,
+  fillExerciseModal,
+  clearExerciseModal,
+} from './modals';
+import { displayError } from './utils/helpers';
 
 const favorites = document.querySelector('.exercises_content');
-let elements;
+const modalOverlay = document.querySelector('.modal-overlay');
+
+let exerciseModalElements;
 
 const arr = [
   favoriteItem,
@@ -22,33 +29,52 @@ const arr = [
   favoriteItem,
 ];
 favorites.innerHTML = getExerciseCardHtml(arr);
-const exerciseItems = document.querySelectorAll('.exercises_item');
+document.querySelectorAll('.exercises_item').forEach(item => {
+  item.addEventListener('click', showExerciseModal);
+});
 
-function showExerciseModal(event) {
+async function showExerciseModal(event) {
   const exerciseId = event.target.closest('.exercises_item').id;
-  elements = {
-    closeBtn: document.querySelector('#modal-close-button'),
-    overlay: document.querySelector('.modal-overlay'),
-    favouriteBtn: document.querySelector('.favourite-btn'),
-  };
 
-  document.querySelector('.modal-overlay').classList.remove('display-none-js');
+  modalOverlay.classList.remove('display-none-js');
 
-  fillExerciseModal(exerciseId);
+  try {
+    await fillExerciseModal(exerciseId);
 
-  elements.closeBtn.addEventListener('click', closeExerciseModal);
-  elements.overlay.addEventListener('click', closeExerciseModal);
-  elements.favouriteBtn.addEventListener('click', handleFovouriteExercise);
+    exerciseModalElements = {
+      closeBtn: document.querySelector('#modal-close-button'),
+      favoriteBtn: document.querySelector('.modal-exercise .favorite-btn'),
+    };
+
+    modalOverlay.addEventListener('click', closeExerciseModal);
+    exerciseModalElements.closeBtn.addEventListener(
+      'click',
+      closeExerciseModal
+    );
+    exerciseModalElements.favoriteBtn.addEventListener(
+      'click',
+      handleFovouriteExercise
+    );
+  } catch (error) {
+    displayError(error.message);
+  } finally {
+    modalOverlay.classList.add('display-none-js');
+  }
 }
 
 function closeExerciseModal() {
-  document.querySelector('.modal-overlay').classList.add('display-none-js');
+  modalOverlay.classList.add('display-none-js');
+  exerciseModalElements.closeBtn.removeEventListener(
+    'click',
+    closeExerciseModal
+  );
+  modalOverlay.removeEventListener('click', closeExerciseModal);
+  exerciseModalElements.favoriteBtn.removeEventListener(
+    'click',
+    handleFovouriteExercise
+  );
 
   clearExerciseModal();
-
-  elements.closeBtn.removeEventListener('click', closeExerciseModal);
-  elements.overlay.removeEventListener('click', closeExerciseModal);
-  elements.favouriteBtn.removeEventListener('click', handleFovouriteExercise);
 }
 
 function handleFovouriteExercise(event) {
@@ -58,17 +84,15 @@ function handleFovouriteExercise(event) {
 
   if (checkFavoriteExercises(exerciseId)) {
     removeFromFavorite(exerciseId);
-    elements.favouriteBtn.innerHTML = 'Add to favorites';
+    elements.favoriteBtn.innerHTML = favoriteBtnContent.add;
   } else {
     addToFavorites(exerciseId);
-    elements.favouriteBtn.innerHTML = 'Remove from favorites';
+    elements.favoriteBtn.innerHTML = favoriteBtnContent.remove;
   }
+
+  elements.favoriteBtn.blur();
 }
 
-exerciseItems.forEach(item => {
-  item.addEventListener('click', showExerciseModal);
-});
-console.log(exerciseItems);
 // const h = getExerciseCardHtml([]);
 // console.log(h);
 // favorites.innerHTML = h;

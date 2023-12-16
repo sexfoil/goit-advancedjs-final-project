@@ -1,39 +1,48 @@
 .exercises-section {
   padding-top: 40px;
 }
+
 .exercises_top {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
 .exercises-wrap {
   display: flex;
   align-items: center;
   margin-bottom: 40px;
 }
+
 .exercises_title {
   font-size: 28px;
   font-weight: 400;
-  line-height: 20px; /* 100% */
+  line-height: 20px;
+  /* 100% */
 }
+
 .exercises_name {
   display: none;
   margin-left: 8px;
   color: rgba(36, 36, 36, 0.5);
   font-size: 20px;
   font-weight: 400;
-  line-height: 20px; /* 100% */
+  line-height: 20px;
+  /* 100% */
 }
+
 .exercises_search {
   display: none;
   position: relative;
   margin-bottom: 20px;
 }
+
 .exercises_search-img {
   position: absolute;
   top: 13px;
   right: 15px;
 }
+
 .exercises_search-input {
   width: 100%;
   border-radius: 30px;
@@ -41,7 +50,8 @@
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 20px; /* 142.857% */
+  line-height: 20px;
+  /* 142.857% */
   padding: 12px 14px 12px 14px;
 }
 
@@ -55,6 +65,7 @@
   display: flex;
   gap: 20px;
 }
+
 .exercises__nav-item {
   color: rgba(36, 36, 36, 0.6);
 
@@ -62,6 +73,7 @@
   font-weight: 400;
   line-height: 20px;
 }
+
 .exercises__nav-item-current {
   position: relative;
   color: #242424;
@@ -70,6 +82,7 @@
   font-weight: 400;
   line-height: 20px;
 }
+
 .exercises__nav-item-current::before {
   content: '';
   position: absolute;
@@ -137,7 +150,7 @@
   margin-bottom: 46px;
 }
 
-.category-text-content > h3 {
+.category-text-content>h3 {
   color: var(--color-white);
   text-align: center;
   font-family: var(--font-primary);
@@ -147,7 +160,7 @@
   line-height: 100%;
 }
 
-.category-text-content > p {
+.category-text-content>p {
   color: var(--color-white);
   text-align: center;
   font-family: var(--font-primary);
@@ -265,9 +278,10 @@
 
   .exercises_quote {
     padding: 40px;
+    position: relative;
   }
 
-  .category-text-content > h3 {
+  .category-text-content>h3 {
     font-size: 24px;
   }
 
@@ -319,6 +333,7 @@
   .category-item-container {
     height: 242px;
   }
+
   .empty-exercises {
     font-size: 18px;
     padding: 0 140px;
@@ -329,5 +344,112 @@
 @media screen and (max-width: 767px) {
   .exercises_banner-m {
     height: 120px;
+  }
+}
+
+/* quote-home */
+
+.quote-svg__running {
+  position: absolute;
+  top: 35px;
+  left: 40px;
+  transform: translate(-50%, -50%);
+  width: 34px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(244, 244, 244, 0.2);
+}
+
+@media screen and (min-width: 768px) {
+  .quote-svg__running {
+    top: 55px;
+    left: 52px;
+  }
+}
+
+.quote-svg {
+  fill: var(--color-white);
+}
+
+.quote-svg__commas {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  fill: var(--color-white);
+}
+
+@media screen and (min-width: 768px) {
+  .quote-svg__commas {
+    top: 40px;
+    right: 40px;
+    height: 20px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.quote_title {
+  margin-bottom: 8px;
+  padding-left: 52px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-white);
+}
+
+@media screen and (min-width: 768px) {
+  .quote_title {
+    margin-bottom: 6px;
+    font-size: 24px;
+    line-height: 1.33;
+    padding-left: 50px;
+  }
+}
+
+.quote_text {
+  font-size: 14px;
+  padding-left: 52px;
+  font-weight: var(--font-weight-primary-regular);
+  line-height: 1.29;
+  color: rgba(244, 244, 244, 0.6);
+}
+
+.quote_author {
+  font-weight: var(--font-weight-primary-regular);
+  padding-left: 52px;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--color-white);
+}
+
+@media screen and (min-width: 768px) {
+  .quote_author {
+    font-size: 16px;
+    line-height: 1.5;
+    ;
+  }
+}
+
+.quote_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 141px;
+}
+
+@media screen and (min-width: 768px) {
+  .quote_wrap {
+    min-height: 132px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .quote_wrap {
+    min-height: 124px;
   }
 }

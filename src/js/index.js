@@ -1,6 +1,7 @@
 import { getExerciseCardHtml, getCategoryCardHtml } from './utils/html-render';
 import * as api from './api.js';
 import { attribute } from './property/constants';
+import './quote.js';
 
 const categoryList = document.querySelector('.category_content');
 

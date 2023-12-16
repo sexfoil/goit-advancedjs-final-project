@@ -36,3 +36,6 @@ function onCategoryListClick(event) {
 //   'Cool'
 // );
 // console.log(rate);
+
+document.querySelector('.nav-item_home').classList.add('active');
+document.querySelector('.nav-item_favorites').classList.remove('active');

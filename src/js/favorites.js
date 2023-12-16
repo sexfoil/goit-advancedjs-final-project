@@ -29,9 +29,9 @@ const arr = [
   favoriteItem,
 ];
 favorites.innerHTML = getExerciseCardHtml(arr);
-document.querySelectorAll('.exercises_item').forEach(item => {
-  item.addEventListener('click', showExerciseModal);
-});
+// document.querySelectorAll('.exercises_item').forEach(item => {
+//   item.addEventListener('click', showExerciseModal);
+// });
 
 async function showExerciseModal(event) {
   const exerciseId = event.target.closest('.exercises_item').id;

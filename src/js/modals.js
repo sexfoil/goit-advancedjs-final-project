@@ -43,59 +43,67 @@ export async function fillExerciseModal(exerciseId) {
 
   elements.modal.setAttribute('data-exercise-id', exerciseId);
 
-  const data = await getExerciseById(exerciseId);
+  try {
+    const data = await getExerciseById(exerciseId);
 
-  const { description, name, rating, gifUrl } = data;
+    if (data.statusText === 'Bad Request') {
+      throw new Error(data.statusText || 'Something went wrong');
+    }
 
-  if (gifUrl) {
-    elements.imageWrapper.innerHTML = `<img class="image" src="${gifUrl}" alt="${name}" />`;
-  }
+    const { description, name, rating, gifUrl } = data;
 
-  elements.title.innerHTML = name;
-  elements.rating.innerHTML = `${Number(rating).toFixed(1)}`;
-  elements.description.innerHTML = description;
-  elements.favoriteBtn.innerHTML = checkFavoriteExercises(exerciseId)
-    ? favoriteBtnContent.remove
-    : favoriteBtnContent.add;
+    if (gifUrl) {
+      elements.imageWrapper.innerHTML = `<img class="image" src="${gifUrl}" alt="${name}" />`;
+    }
 
-  for (let dataCellName of Object.keys(dataCellNames)) {
-    if (data[dataCellName]) {
-      elements.dataWrapper.insertAdjacentHTML(
-        'beforeend',
-        `
+    elements.title.innerHTML = name;
+    elements.rating.innerHTML = `${Number(rating).toFixed(1)}`;
+    elements.description.innerHTML = description;
+    elements.favoriteBtn.innerHTML = checkFavoriteExercises(exerciseId)
+      ? favoriteBtnContent.remove
+      : favoriteBtnContent.add;
+
+    for (let dataCellName of Object.keys(dataCellNames)) {
+      if (data[dataCellName]) {
+        elements.dataWrapper.insertAdjacentHTML(
+          'beforeend',
+          `
           <div class="data-cell">
             <div class="data-name">${dataCellNames[dataCellName]}</div>
             <div class="data-value">${data[dataCellName]}</div>
           </div>
         `
-      );
+        );
+      }
     }
-  }
 
-  let starsCounter = 0;
+    let starsCounter = 0;
 
-  for (let star of elements.ratingStars) {
-    if (rating - starsCounter > 1) {
-      star.style.fill = '#eea10c';
-      starsCounter++;
-    } else {
-      const breakPoint = (rating - starsCounter) * 100;
-      star.insertAdjacentHTML(
-        'afterbegin',
-        `
+    for (let star of elements.ratingStars) {
+      if (rating - starsCounter > 1) {
+        star.style.fill = '#eea10c';
+        starsCounter++;
+      } else {
+        const breakPoint = (rating - starsCounter) * 100;
+        star.insertAdjacentHTML(
+          'afterbegin',
+          `
           <linearGradient id="linear-gradient">
             <stop offset="${breakPoint}%" stop-color="#eea10c"/>
             <stop offset="${breakPoint}%" stop-color="rgba(244, 244, 244, 0.2)"/>
           </linearGradient>
         `
-      );
-      star.style.fill = 'url(#linear-gradient)';
-      break;
+        );
+        star.style.fill = 'url(#linear-gradient)';
+        break;
+      }
     }
-  }
 
-  elements.modalContent.classList.remove('display-none-js');
-  elements.loader.classList.add('display-none-js');
+    elements.modalContent.classList.remove('display-none-js');
+    elements.loader.classList.add('display-none-js');
+  } catch (error) {
+    throw error;
+  }
 }
 
 export function clearExerciseModal() {

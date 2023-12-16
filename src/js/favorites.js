@@ -10,8 +10,11 @@ import {
   fillExerciseModal,
   clearExerciseModal,
 } from './modals';
+import { displayError } from './utils/helpers';
 
 const favorites = document.querySelector('.exercises_content');
+const modalOverlay = document.querySelector('.modal-overlay');
+
 let exerciseModalElements;
 
 const arr = [
@@ -30,36 +33,42 @@ document.querySelectorAll('.exercises_item').forEach(item => {
   item.addEventListener('click', showExerciseModal);
 });
 
-function showExerciseModal(event) {
+async function showExerciseModal(event) {
   const exerciseId = event.target.closest('.exercises_item').id;
 
-  fillExerciseModal(exerciseId);
+  modalOverlay.classList.remove('display-none-js');
 
-  exerciseModalElements = {
-    closeBtn: document.querySelector('#modal-close-button'),
-    overlay: document.querySelector('.modal-overlay'),
-    favoriteBtn: document.querySelector('.modal-exercise .favorite-btn'),
-  };
+  try {
+    await fillExerciseModal(exerciseId);
 
-  exerciseModalElements.overlay.classList.remove('display-none-js');
-  exerciseModalElements.overlay.addEventListener('click', closeExerciseModal);
-  exerciseModalElements.closeBtn.addEventListener('click', closeExerciseModal);
-  exerciseModalElements.favoriteBtn.addEventListener(
-    'click',
-    handleFovouriteExercise
-  );
+    exerciseModalElements = {
+      closeBtn: document.querySelector('#modal-close-button'),
+      favoriteBtn: document.querySelector('.modal-exercise .favorite-btn'),
+    };
+
+    modalOverlay.addEventListener('click', closeExerciseModal);
+    exerciseModalElements.closeBtn.addEventListener(
+      'click',
+      closeExerciseModal
+    );
+    exerciseModalElements.favoriteBtn.addEventListener(
+      'click',
+      handleFovouriteExercise
+    );
+  } catch (error) {
+    displayError(error.message);
+  } finally {
+    modalOverlay.classList.add('display-none-js');
+  }
 }
 
 function closeExerciseModal() {
-  exerciseModalElements.overlay.classList.add('display-none-js');
+  modalOverlay.classList.add('display-none-js');
   exerciseModalElements.closeBtn.removeEventListener(
     'click',
     closeExerciseModal
   );
-  exerciseModalElements.overlay.removeEventListener(
-    'click',
-    closeExerciseModal
-  );
+  modalOverlay.removeEventListener('click', closeExerciseModal);
   exerciseModalElements.favoriteBtn.removeEventListener(
     'click',
     handleFovouriteExercise

@@ -40,6 +40,7 @@
 }
 
 .loader {
+  margin: 0 auto;
   border: 16px solid rgba(243, 243, 243, 0.2);
   border-top: 16px solid var(--color-white);
   border-radius: 50%;

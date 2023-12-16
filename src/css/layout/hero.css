@@ -13,7 +13,6 @@
 }
 
 .hero_left {
-  /* width: 640px; */
   display: flex;
   flex-direction: column;
 }
@@ -23,10 +22,8 @@
 
 .hero_title {
   font-size: 38px;
-  /* text-align: center; */
-  /* margin-left: 15px; */
+
   margin-bottom: 20px;
-  /* font-family: 'DM Sans'; */
 }
 
 .hero_slogan {
@@ -36,7 +33,6 @@
 .hero_right {
   display: none;
   width: 200px;
-  /* display: flex; */
   flex-direction: column;
 }
 

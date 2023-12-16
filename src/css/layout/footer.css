@@ -1,7 +1,6 @@
 .footer {
   background: #242424;
   height: 590px;
-  min-width: 375px;
 }
 
 .page-footer-container {
@@ -65,7 +64,7 @@
   font-size: 38px;
   font-weight: var(--font-weight-primary-regular);
   line-height: 1.16;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   max-width: 595px;
 }
 
@@ -143,7 +142,7 @@
 
 .footer-bottom-right {
   display: flex;
-  gap: 79px;
+  justify-content: space-between;
 }
 
 .footer-legal-links {

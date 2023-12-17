@@ -41,6 +41,8 @@ export async function fillExerciseModal(exerciseId) {
     favoriteBtn: document.querySelector('.modal-exercise .favorite-btn'),
   };
 
+  document.body.style.overflow = 'hidden';
+
   elements.modal.removeAttribute('data-exercise-id');
   elements.imageWrapper.innerHTML = '';
   elements.dataWrapper.innerHTML = '';
@@ -111,6 +113,8 @@ export async function fillExerciseModal(exerciseId) {
 }
 
 export function clearExerciseModal() {
+  document.body.style.overflow = 'visible';
+
   elements.modalContent.classList.add('display-none-js');
   elements.loader.classList.remove('display-none-js');
 }

@@ -26,9 +26,7 @@ const arr = [
 ];
 favorites.innerHTML = getFavoritesCardHtml(arr, 'Equipment', 'barbell');
 
-document
-  .querySelector('.exercises_content')
-  .addEventListener('click', showExerciseModal);
+favorites.addEventListener('click', showExerciseModal);
 
 async function showExerciseModal(event) {
   const exerciseItem = event.target.closest('.exercises_item');
@@ -56,6 +54,7 @@ async function showExerciseModal(event) {
       'click',
       handleFovouriteExercise
     );
+    document.addEventListener('keydown', handleEscClick);
   } catch (error) {
     modalOverlay.classList.add('display-none-js');
     displayError(error.message);
@@ -91,6 +90,12 @@ function handleFovouriteExercise(event) {
   }
 
   exerciseModalElements.favoriteBtn.blur();
+}
+
+function handleEscClick(event) {
+  if (event.key !== 'Escape') return;
+
+  closeExerciseModal();
 }
 
 // const h = getExerciseCardHtml([]);

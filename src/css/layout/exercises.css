@@ -48,6 +48,7 @@
 .exercises_wrap {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 40px;
 }
 
@@ -82,6 +83,7 @@
 
 /* from here */
 .exercises_side {
+  order: 2;
   display: flex;
   flex-wrap: wrap;
   width: 335px;
@@ -89,14 +91,16 @@
 }
 
 .exercises_quote {
+  order: 1;
+  min-height: 50px;
   width: 100%;
-  padding: 20px;
   background-color: var(--color-black);
   border-radius: 20px;
   color: var(--color-white);
 }
 
 .exercises_text {
+  order: 3;
   width: 100%;
   padding: 20px;
   border-radius: 20px;
@@ -107,6 +111,7 @@
 }
 
 .exercises_banner-m {
+  order: 2;
   width: 100%;
   height: inherit;
   background: url('../../img/banner-m.png');
@@ -121,6 +126,7 @@
 }
 
 .exercises_content-wrap {
+  order: 1;
   width: 100%;
 }
 
@@ -157,7 +163,7 @@
   line-height: 150%;
 }
 
-/* 
+/*
   EXERCISE_CARD CSS
 */
 .exercises_item {
@@ -272,7 +278,7 @@
   color: #36363640;
 }
 
-.card-icon {  
+.card-icon {
   stroke: var(--color-black);
   fill: var(--color-white-secondary);
 }
@@ -288,6 +294,7 @@
   }
 
   .exercises_quote {
+    width: 400px;
     padding: 40px;
   }
 
@@ -296,12 +303,13 @@
   }
 
   .exercises_text {
-    width: calc(50% - 8px);
+    width: 400px;
     padding: 25px;
   }
 
   .exercises_banner-m {
-    width: calc(50% - 8px);
+    width: 288px;
+    height: 249px;
   }
 
   .exercises_content {
@@ -338,11 +346,16 @@
   }
 
   .exercises_side {
-    width: 494px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    order: 1;
+    width: 444px;
   }
 
   .exercises_content-wrap {
     width: calc(100% - 534px);
+    order: 2;
   }
 
   .category-item-container {
@@ -352,6 +365,18 @@
     font-size: 18px;
     padding: 0 140px;
     margin-top: 114px;
+  }
+  .exercises_quote {
+    width: 444px;
+  }
+
+  .exercises_text {
+    width: 444px;
+  }
+
+  .exercises_banner-m {
+    width: 444px;
+    height: 242px;
   }
 }
 

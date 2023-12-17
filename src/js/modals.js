@@ -107,6 +107,8 @@ export async function fillExerciseModal(exerciseId) {
 
     elements.modalContent.classList.remove('display-none-js');
     elements.loader.classList.add('display-none-js');
+
+    return data;
   } catch (error) {
     throw error;
   }

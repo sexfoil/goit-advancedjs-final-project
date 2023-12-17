@@ -44,7 +44,6 @@ async function onSearchButton(event) {
     category,
     categorieValue
   );
-  console.log(results);
 }
 async function onCategoryClick(event) {
   try {

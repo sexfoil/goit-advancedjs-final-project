@@ -58,6 +58,8 @@ async function onCategoryClick(event) {
       );
       itemList.innerHTML = '';
       exerciseList.innerHTML = '';
+      searchInput.value = '';
+
       itemList.innerHTML = getCategoryCardHtml(results);
       return;
     };
@@ -97,6 +99,7 @@ async function onCategoryListClick(event) {
       exerciseName.textContent =
         data[1].charAt(0).toUpperCase() + data[1].slice(1);
       search.style = 'display: block';
+      searchInput.value = '';
     };
     fetchPromise(categorie, categorieValue)
       .then(handleResult)

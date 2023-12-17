@@ -13,14 +13,17 @@ function getExercisesByKeyword(
   limit = 10,
   category,
   categoryName,
-  keyword = ''
+  keyword
 ) {
   const params = {
     page,
     limit,
-    keyword,
   };
 
+  params[category] = categoryName;
+  if (keyword) {
+    params['keyword'] = keyword;
+  }
   const fullUrl = getUrl(url.EXERCISES, getParameters(params));
 
   return requestGET(fullUrl);
@@ -71,13 +74,15 @@ async function requestPATCH(url, body) {
 }
 
 function getParameters(parameters) {
-  return new URLSearchParams(parameters);
+  const params = new URLSearchParams(parameters);
+  return params;
 }
 
 function getUrl(endpoint, params) {
   return url.BASE_URL + endpoint + (params ? `?${params}` : '');
 }
 
+// export methods
 export {
   getExercisesByCategory,
   getExercisesByKeyword,

@@ -61,6 +61,7 @@ async function onCategoryClick(event) {
     displayError(error.message);
   }
 }
+
 async function onCategoryListClick(event) {
   try {
     event.preventDefault();

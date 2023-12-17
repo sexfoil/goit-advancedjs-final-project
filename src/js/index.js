@@ -83,7 +83,7 @@ async function onCategoryListClick(event) {
     // let label = data[0].toLocaleLowerCase();
     // let value = data[1].toLocaleLowerCase();
 
-    categorie = encodeURIComponent(data[0]).toLocaleLowerCase();
+    categorie = data[0].toLocaleLowerCase();
     categorieValue = encodeURIComponent(data[1]).toLocaleLowerCase();
 
     const fetchPromise = async (label, value) => {

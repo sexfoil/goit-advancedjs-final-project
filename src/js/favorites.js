@@ -25,12 +25,17 @@ const arr = [
   favoriteItem,
 ];
 favorites.innerHTML = getFavoritesCardHtml(arr, 'Equipment', 'barbell');
-// document.querySelectorAll('.exercises_item').forEach(item => {
-//   item.addEventListener('click', showExerciseModal);
-// });
+
+document
+  .querySelector('.exercises_content')
+  .addEventListener('click', showExerciseModal);
 
 async function showExerciseModal(event) {
-  const exerciseId = event.target.closest('.exercises_item').id;
+  const exerciseItem = event.target.closest('.exercises_item');
+
+  if (!exerciseItem) return;
+
+  const { id: exerciseId } = exerciseItem;
 
   modalOverlay.classList.remove('display-none-js');
 
@@ -52,9 +57,8 @@ async function showExerciseModal(event) {
       handleFovouriteExercise
     );
   } catch (error) {
-    displayError(error.message);
-  } finally {
     modalOverlay.classList.add('display-none-js');
+    displayError(error.message);
   }
 }
 
@@ -80,13 +84,13 @@ function handleFovouriteExercise(event) {
 
   if (checkFavoriteExercises(exerciseId)) {
     removeFromFavorite(exerciseId);
-    elements.favoriteBtn.innerHTML = favoriteBtnContent.add;
+    exerciseModalElements.favoriteBtn.innerHTML = favoriteBtnContent.add;
   } else {
     addToFavorites(exerciseId);
-    elements.favoriteBtn.innerHTML = favoriteBtnContent.remove;
+    exerciseModalElements.favoriteBtn.innerHTML = favoriteBtnContent.remove;
   }
 
-  elements.favoriteBtn.blur();
+  exerciseModalElements.favoriteBtn.blur();
 }
 
 // const h = getExerciseCardHtml([]);

@@ -41,6 +41,10 @@ export async function fillExerciseModal(exerciseId) {
     favoriteBtn: document.querySelector('.modal-exercise .favorite-btn'),
   };
 
+  elements.modal.removeAttribute('data-exercise-id');
+  elements.imageWrapper.innerHTML = '';
+  elements.dataWrapper.innerHTML = '';
+
   elements.modal.setAttribute('data-exercise-id', exerciseId);
 
   try {
@@ -107,18 +111,6 @@ export async function fillExerciseModal(exerciseId) {
 }
 
 export function clearExerciseModal() {
-  elements.modal.removeAttribute('data-exercise-id');
-
-  if (elements.imageWrapper) {
-    elements.imageWrapper.innerHTML = '';
-  }
-
-  elements.title.innerHTML = '';
-  elements.rating.innerHTML = '';
-  elements.description.innerHTML = '';
-  elements.dataWrapper.innerHTML = '';
-  elements.favoriteBtn.innerHTML = '';
-
   elements.modalContent.classList.add('display-none-js');
   elements.loader.classList.remove('display-none-js');
 }

@@ -108,6 +108,7 @@
   order: 1;
   min-height: 50px;
   width: 100%;
+  padding: 20px 20px 20px 32px;
   background-color: var(--color-black);
   border-radius: 20px;
   color: var(--color-white);
@@ -116,15 +117,14 @@
 
 @media screen and (min-width: 768px) {
   .exercises_quote {
-    padding: 0px 20px 20px 90px;
+    padding: 20px 20px 20px 40px;
     width: calc(50% - 8px);
   }
 }
 
-
 @media screen and (min-width: 1280px) {
   .exercises_quote {
-    padding: 0px 20px 20px 90px;
+    padding: 20px 20px 20px 40px;
     width: calc(50% - 8px);
   }
 }
@@ -353,11 +353,13 @@
   .exercises_search {
     width: 273px;
   }
+
   .exercises_search-wrap {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
   }
+
   .exercises_wrap {
     gap: 64px;
     /* position: relative; */
@@ -370,11 +372,11 @@
 
   }
 
-  .exercises_quote {
+  /* .exercises_quote {
     width: 400px;
     padding: 40px;
     position: relative;
-  }
+  } */
 
   .category-text-content>h3 {
     font-size: 24px;
@@ -425,13 +427,16 @@
     margin-bottom: 0;
     margin-right: 30px;
   }
+
   .exercises_top {
     flex-direction: row;
     align-items: center;
   }
+
   .exercises_search-wrap {
     align-items: center;
   }
+
   .exercises_wrap {
     gap: 40px;
   }
@@ -458,9 +463,10 @@
     padding: 0 140px;
     margin-top: 114px;
   }
-  .exercises_quote {
+
+  /* .exercises_quote {
     width: 444px;
-  }
+  } */
 
   .exercises_text {
     width: 444px;
@@ -496,7 +502,7 @@
 
 @media screen and (min-width: 768px) {
   .quote-svg__running {
-    top: 55px;
+    top: 40px;
     left: 52px;
   }
 }
@@ -516,7 +522,7 @@
 
 @media screen and (min-width: 768px) {
   .quote-svg__commas {
-    top: 40px;
+    top: 20px;
     right: 40px;
     height: 20px;
     width: 24px;

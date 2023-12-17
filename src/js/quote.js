@@ -1,6 +1,5 @@
 import { getQuote } from './api.js';
 
-console.log('QOUTE');
 const quoteOfTheDay = document.querySelector('.js-quote');
 
 quote();
@@ -9,7 +8,6 @@ async function quote() {
   try {
     const quoteText = await getQuote();
     displayQuote(quoteText);
-    console.log(quoteText);
   } catch (error) {
     console.log(error);
   }

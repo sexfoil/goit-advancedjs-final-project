@@ -1,6 +1,5 @@
 import { getFavoritesCardHtml } from './utils/html-render';
 import {
-  favoriteItem,
   checkFavoriteExercises,
   addToFavorites,
   removeFromFavorite,
@@ -18,9 +17,12 @@ const modalOverlay = document.querySelector('.modal-overlay');
 
 let exerciseModalElements;
 
-const arr = getFavoriteExercises();
-console.log(arr);
-favorites.innerHTML = getFavoritesCardHtml(arr, 'Equipment', 'barbell');
+export function fillFavorities() {
+  const arr = getFavoriteExercises();
+  favorites.innerHTML = getFavoritesCardHtml(arr, 'Equipment', 'barbell');
+}
+
+fillFavorities();
 
 favorites.addEventListener('click', showExerciseModal);
 
@@ -93,10 +95,6 @@ function handleEscClick(event) {
 
   closeExerciseModal();
 }
-
-// const h = getExerciseCardHtml([]);
-// console.log(h);
-// favorites.innerHTML = h;
 
 document.querySelector('.nav-item_home').classList.remove('active');
 document.querySelector('.nav-item_favorites').classList.add('active');

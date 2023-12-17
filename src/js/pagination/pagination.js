@@ -32,6 +32,12 @@ export const Pagination = class {
     }
 
     const paginationList = document.createElement('ul');
+
+    if (!totalPages) {
+      paginationList.innerHTML = '';
+      return;
+    }
+
     paginationList.classList.add('pagination-list');
     this.container.append(paginationList);
 

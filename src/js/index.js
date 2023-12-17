@@ -255,7 +255,6 @@ document.getElementById('scrollToTopButton').onclick = function () {
 const modalOverlay = document.querySelector('.modal-overlay');
 
 let exerciseModalElements;
-let currentExercise;
 
 document
   .querySelector('.exercises_content')
@@ -271,7 +270,7 @@ async function showExerciseModal(event) {
   modalOverlay.classList.remove('display-none-js');
 
   try {
-    currentExercise = await fillExerciseModal(exerciseId);
+    await fillExerciseModal(exerciseId);
 
     exerciseModalElements = {
       closeBtn: document.querySelector('#modal-close-button'),
@@ -312,13 +311,13 @@ function closeExerciseModal() {
 function handleFovouriteExercise(event) {
   event.stopPropagation();
 
-  const { _id: exerciseId } = currentExercise;
+  const exerciseId = event.target.closest('.modal-exercise').dataset.exerciseId;
 
   if (checkFavoriteExercises(exerciseId)) {
     removeFromFavorite(exerciseId);
     exerciseModalElements.favoriteBtn.innerHTML = favoriteBtnContent.add;
   } else {
-    addToFavorites(currentExercise);
+    addToFavorites(exerciseId);
     exerciseModalElements.favoriteBtn.innerHTML = favoriteBtnContent.remove;
   }
 

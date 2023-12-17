@@ -73,7 +73,11 @@ async function onSearchButton(event) {
 
     itemList.innerHTML = '';
     exerciseList.innerHTML = '';
-    itemList.innerHTML = getExerciseCardHtml(results, category, categorieValue);
+    exerciseList.innerHTML = getExerciseCardHtml(
+      results,
+      category,
+      categorieValue
+    );
     searchInput.value = '';
 
     return totalPages;

@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios';
 import { subscribe } from './api.js';
 import {
   isWhitespacesOrEmpty,

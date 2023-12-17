@@ -227,7 +227,6 @@
   height: 225px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: #242424;
 }
 
 .category-text-content {
@@ -400,8 +399,8 @@
     gap: 32px 15px;
   }
 
-  .exercises_content:has(.empty-exercises),
-  .exercises_content:has(.empty-favorites) {
+  .exercises_content>.empty-exercises,
+  .exercises_content>.empty-favorites {
     grid-template-columns: 1fr;
   }
 

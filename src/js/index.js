@@ -23,6 +23,9 @@ const search = document.querySelector('.exercises_search');
 const searchInput = document.querySelector('.exercises_search-input');
 const searchButton = document.querySelector('.exercises_search-img');
 
+itemList.innerHTML = '';
+exerciseList.innerHTML = '';
+
 let category = null;
 let categorieValue = null;
 //Базовая инициализация

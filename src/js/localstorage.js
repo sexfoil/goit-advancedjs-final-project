@@ -54,24 +54,6 @@ const favoriteItem = {
   popularity: 7415,
 };
 
-// const addToFavoritesBtn = document.querySelector('.add-to-favourite');
-// addToFavoritesBtn.addEventListener('click', () => {
-//   const id = addToFavoritesBtn.getAttribute('data-id');
-//   let favoriteExercises = favoriteExercises();
-//   if (!favoriteExercises.some(item => item._id === id)) {
-//     const newItem = favoriteItem; /// ДОДАТИ ЗАПИТ НА ОБЪЕКТ ПО _id !!!!
-//     favoriteExercises.push(newItem);
-//     localStorage.setItem(LS_KEY, JSON.stringify(favoriteExercises));
-//   }
-// });
-
-// document.querySelectorAll('.remove-from-favourite').forEach(button => {
-//   button.addEventListener('click', () => {
-//     const id = button.getAttribute('data-id');
-//     removeFromFavorite(id);
-//   });
-// });
-
 export {
   favoriteItem,
   addToFavorites,

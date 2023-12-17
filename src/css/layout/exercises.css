@@ -403,6 +403,7 @@
 
   .exercises_content-wrap {
     width: calc(100% - 534px);
+    margin-bottom: 132px;
     order: 2;
   }
 

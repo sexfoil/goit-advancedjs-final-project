@@ -82,7 +82,6 @@ function getUrl(endpoint, params) {
   return url.BASE_URL + endpoint + (params ? `?${params}` : '');
 }
 
-// export methods
 export {
   getExercisesByCategory,
   getExercisesByKeyword,

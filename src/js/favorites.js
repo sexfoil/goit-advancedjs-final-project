@@ -11,6 +11,7 @@ import {
   clearExerciseModal,
 } from './modals';
 import { displayError } from './utils/helpers';
+import { getExercisesByKeyword } from './api';
 
 const favorites = document.querySelector('.exercises_content');
 const modalOverlay = document.querySelector('.modal-overlay');

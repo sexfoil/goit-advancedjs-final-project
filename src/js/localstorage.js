@@ -59,4 +59,5 @@ export {
   addToFavorites,
   removeFromFavorite,
   checkFavoriteExercises,
+  getFavoriteExercises,
 };

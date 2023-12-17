@@ -19,6 +19,7 @@ function getExercisesByKeyword(
     page,
     limit,
   };
+
   params[category] = categoryName;
   if (keyword) {
     params['keyword'] = keyword;
@@ -81,6 +82,7 @@ function getUrl(endpoint, params) {
   return url.BASE_URL + endpoint + (params ? `?${params}` : '');
 }
 
+// export methods
 export {
   getExercisesByCategory,
   getExercisesByKeyword,

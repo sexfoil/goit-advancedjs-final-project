@@ -1,23 +1,112 @@
 import { getExerciseCardHtml, getCategoryCardHtml } from './utils/html-render';
 import * as api from './api.js';
 import { attribute } from './property/constants';
+import { displayError } from './utils/helpers.js';
 
-const categoryList = document.querySelector('.category_content');
+const itemList = document.querySelector('.category_content');
+const categoryList = document.querySelector('.exercises_nav');
+const exerciseList = document.querySelector('.exercises_content');
+const exerciseName = document.querySelector('.exercises_name');
+const search = document.querySelector('.exercises_search');
+const searchInput = document.querySelector('.exercises_search-input');
+const searchButton = document.querySelector('.exercises_search-img');
 
+let categorie = null;
+let categorieValue = null;
+//Базовая инициализация
 const categories = await api.getExercisesByCategory(1, 12);
-categoryList.innerHTML = getCategoryCardHtml(categories.results);
-
-categoryList.addEventListener('click', onCategoryListClick);
-
-function onCategoryListClick(event) {
+itemList.innerHTML = getCategoryCardHtml(categories.results);
+//Слушатели
+itemList.addEventListener('click', onCategoryListClick);
+categoryList.addEventListener('click', onCategoryClick);
+searchButton.addEventListener('click', onSearchButton);
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    onSearchButton(e);
+  }
+});
+//Функции к слушателям
+async function onSearchButton(event) {
   event.preventDefault();
 
-  const data = event.target.dataset[attribute.DATA_INFO].split(
-    attribute.DATA_INFO_DELIMETER
+  const { results } = await api.getExercisesByKeyword(
+    1,
+    10,
+    categorie,
+    categorieValue,
+    searchInput.value
   );
-  // .dataset['source'];
-  console.dir(data);
+  itemList.innerHTML = '';
+  exerciseList.innerHTML = '';
+  itemList.innerHTML = getExerciseCardHtml(results);
 }
+async function onCategoryClick(event) {
+  try {
+    let target = event.target;
+    let contentTarget = target.textContent.trim();
+    let curentCategory = document.querySelector('.exercises__nav-item-current');
+
+    const toogleClass = async (curentCategory, target) => {
+      curentCategory.classList.remove('exercises__nav-item-current');
+      target.classList.add('exercises__nav-item-current');
+    };
+    const rendering = async (contentTarget, curentCategory) => {
+      const { results } = await api.getExercisesByCategory(
+        1,
+        12,
+        contentTarget
+      );
+      itemList.innerHTML = '';
+      exerciseList.innerHTML = '';
+      itemList.innerHTML = getCategoryCardHtml(results);
+      return;
+    };
+
+    toogleClass(curentCategory, target);
+    rendering(contentTarget, curentCategory);
+    exerciseName.style = 'display: none;';
+    search.style = 'display: none;';
+  } catch (error) {
+    displayError(error.message);
+  }
+}
+
+async function onCategoryListClick(event) {
+  try {
+    event.preventDefault();
+
+    const data = event.target.dataset[attribute.DATA_INFO].split(
+      attribute.DATA_INFO_DELIMETER
+    );
+    // let label = data[0].toLocaleLowerCase();
+    // let value = data[1].toLocaleLowerCase();
+
+    categorie = encodeURIComponent(data[0]).toLocaleLowerCase();
+    categorieValue = encodeURIComponent(data[1]).toLocaleLowerCase();
+
+    const fetchPromise = async (label, value) => {
+      return await api.getExercisesByKeyword(1, 12, label, value);
+    };
+
+    const handleResult = async ({ results }) => {
+      itemList.innerHTML = '';
+      exerciseList.innerHTML = getExerciseCardHtml(results);
+    };
+    const addExercisesName = () => {
+      exerciseName.style = 'display: block;';
+      exerciseName.textContent =
+        data[1].charAt(0).toUpperCase() + data[1].slice(1);
+      search.style = 'display: block';
+    };
+    fetchPromise(categorie, categorieValue)
+      .then(handleResult)
+      .catch(displayError);
+    addExercisesName();
+  } catch (error) {
+    displayError(error.message);
+  }
+}
+
 // const resp = await api.getExercisesByKeyword(1, 10, 'bodypart', 'back', 'back');
 // console.log(resp);
 

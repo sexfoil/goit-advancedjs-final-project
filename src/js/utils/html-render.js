@@ -1,25 +1,6 @@
 import { text, attribute } from '../property/constants';
 import { capitalize } from './text-modifier';
 
-const svg = {
-  rating: `
-    <p class="text-usuala">RATING</p>
-    <svg class="card-icon-star" width="18" height="22">
-        <use href="./img/icons.svg#yellow-star"></use>
-    </svg>`,
-  recycleBin: `
-    <svg class="card-icon" width="16" height="16">
-        <use href="./img/icons.svg#icon-remove"></use>
-    </svg>`,
-  arrow: `
-    <svg class="card-icon" width="16" height="16">
-        <use href="./img/icons.svg#icon-arrow"></use>
-    </svg>`,
-  runner: `
-    <svg class="card-icon" width="24" height="24">
-        <use href="./img/icons.svg#icon-running-stick"></use>
-    </svg>`,
-};
 export function getFavoritesCardHtml(favorites, category, categoryName) {
   if (!favorites.length) {
     return `<li class="empty-favorites usual-text">${text.EMPTY_FAVORITES}</li>`;
@@ -108,6 +89,26 @@ export function getCategoryCardHtml(category) {
     })
     .join('');
 }
+
+const svg = {
+  rating: `
+    <p class="text-usuala">RATING</p>
+    <svg class="card-icon-star" width="18" height="22">
+        <use href="./img/icons.svg#yellow-star"></use>
+    </svg>`,
+  recycleBin: `
+    <svg class="card-icon" width="16" height="16">
+        <use href="./img/icons.svg#icon-remove"></use>
+    </svg>`,
+  arrow: `
+    <svg class="card-icon" width="16" height="16">
+        <use href="./img/icons.svg#icon-arrow"></use>
+    </svg>`,
+  runner: `
+    <svg class="card-icon" width="24" height="24">
+        <use href="./img/icons.svg#icon-running-stick"></use>
+    </svg>`,
+};
 
 function round(num) {
   return Math.round(num * 10) / 10;

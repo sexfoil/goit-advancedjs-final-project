@@ -39,7 +39,11 @@ async function onSearchButton(event) {
   );
   itemList.innerHTML = '';
   exerciseList.innerHTML = '';
-  itemList.innerHTML = getExerciseCardHtml(results, category, categorieValue);
+  exerciseList.innerHTML = getExerciseCardHtml(
+    results,
+    category,
+    categorieValue
+  );
   console.log(results);
 }
 async function onCategoryClick(event) {
@@ -80,8 +84,6 @@ async function onCategoryListClick(event) {
     const data = event.target.dataset[attribute.DATA_INFO].split(
       attribute.DATA_INFO_DELIMETER
     );
-    // let label = data[0].toLocaleLowerCase();
-    // let value = data[1].toLocaleLowerCase();
 
     category = data[0].toLowerCase();
     categorieValue = data[1];

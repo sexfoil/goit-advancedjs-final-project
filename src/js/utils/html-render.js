@@ -22,7 +22,7 @@ const svg = {
 };
 export function getFavoritesCardHtml(favorites, category, categoryName) {
   if (!favorites.length) {
-    return `<li class="empty-exercises usual-text">${text.EMPTY_FAVORITES}</li>`;
+    return `<li class="empty-favorites usual-text">${text.EMPTY_FAVORITES}</li>`;
   }
   return getHtml(favorites, category, categoryName, true);
 }

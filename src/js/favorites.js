@@ -18,11 +18,11 @@ const modalOverlay = document.querySelector('.modal-overlay');
 let exerciseModalElements;
 
 const arr = [
-  favoriteItem,
-  favoriteItem,
-  favoriteItem,
-  favoriteItem,
-  favoriteItem,
+  // favoriteItem,
+  // favoriteItem,
+  // favoriteItem,
+  // favoriteItem,
+  // favoriteItem,
 ];
 favorites.innerHTML = getFavoritesCardHtml(arr, 'Equipment', 'barbell');
 

@@ -137,7 +137,8 @@
   gap: 20px;
 }
 
-.empty-exercises {
+.empty-exercises,
+.empty-favorites {
   text-align: center;
   margin: 0 auto;
   margin-bottom: 46px;
@@ -350,11 +351,13 @@
     gap: 32px 15px;
   }
 
-  .exercises_content:has(.empty-exercises) {
+  .exercises_content:has(.empty-exercises),
+  .exercises_content:has(.empty-favorites) {
     grid-template-columns: 1fr;
   }
 
-  .empty-exercises {
+  .empty-exercises,
+  .empty-favorites {
     width: 100%;
     font-size: 18px;
     padding: 0 75px;

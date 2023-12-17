@@ -39,6 +39,26 @@
   display: none;
 }
 
+.loader {
+  margin: 0 auto;
+  border: 16px solid rgba(243, 243, 243, 0.2);
+  border-top: 16px solid var(--color-white);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /*======   Exercise modal   ======*/
 .modal-exercise .image-wrapper {
   margin-bottom: 20px;
@@ -148,6 +168,10 @@
     padding: 32px;
     width: auto;
     max-width: 704px;
+  }
+
+  .modal-exercise .modal-content {
+    display: flex;
   }
 
   .modal-exercise .image-wrapper {

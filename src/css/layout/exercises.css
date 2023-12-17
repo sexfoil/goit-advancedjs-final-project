@@ -48,6 +48,7 @@
 .exercises_wrap {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 40px;
 }
 
@@ -82,6 +83,7 @@
 
 /* from here */
 .exercises_side {
+  order: 2;
   display: flex;
   flex-wrap: wrap;
   width: 335px;
@@ -89,14 +91,16 @@
 }
 
 .exercises_quote {
+  order: 1;
+  min-height: 50px;
   width: 100%;
-  padding: 20px;
   background-color: var(--color-black);
   border-radius: 20px;
   color: var(--color-white);
 }
 
 .exercises_text {
+  order: 3;
   width: 100%;
   padding: 20px;
   border-radius: 20px;
@@ -107,6 +111,7 @@
 }
 
 .exercises_banner-m {
+  order: 2;
   width: 100%;
   height: inherit;
   background: url('../../img/banner-m.png');
@@ -121,6 +126,7 @@
 }
 
 .exercises_content-wrap {
+  order: 1;
   width: 100%;
 }
 
@@ -157,7 +163,7 @@
   line-height: 150%;
 }
 
-/* 
+/*
   EXERCISE_CARD CSS
 */
 .exercises_item {
@@ -224,16 +230,26 @@
   border-radius: 15px;
 }
 
+.workout-logo-addon {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.card-icon-star {
+  fill: var(--color-yellow);
+}
+
 .card-start {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #242424;
-  font-family: DM Sans;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
+}
+
+.card-start-arrow {
+  display: flex;
+  align-items: center;
 }
 
 .card-body {
@@ -244,6 +260,15 @@
   margin-bottom: 16px;
 }
 
+.card-body-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-black);
+  border-radius: 50%;
+  border: 5px solid var(--color-black);
+}
+
 .card-footer {
   display: flex;
   justify-content: center;
@@ -251,6 +276,11 @@
 
 .info-item-name {
   color: #36363640;
+}
+
+.card-icon {
+  stroke: var(--color-black);
+  fill: var(--color-white-secondary);
 }
 
 @media screen and (min-width: 768px) {
@@ -264,6 +294,7 @@
   }
 
   .exercises_quote {
+    width: 400px;
     padding: 40px;
   }
 
@@ -272,12 +303,13 @@
   }
 
   .exercises_text {
-    width: calc(50% - 8px);
+    width: 400px;
     padding: 25px;
   }
 
   .exercises_banner-m {
-    width: calc(50% - 8px);
+    width: 288px;
+    height: 249px;
   }
 
   .exercises_content {
@@ -301,6 +333,11 @@
     font-size: 18px;
     line-height: 133%;
   }
+
+  .card-start-name.usual-text {
+    font-size: 16px;
+    line-height: 150%;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -309,11 +346,16 @@
   }
 
   .exercises_side {
-    width: 494px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    order: 1;
+    width: 444px;
   }
 
   .exercises_content-wrap {
     width: calc(100% - 534px);
+    order: 2;
   }
 
   .category-item-container {
@@ -323,6 +365,18 @@
     font-size: 18px;
     padding: 0 140px;
     margin-top: 114px;
+  }
+  .exercises_quote {
+    width: 444px;
+  }
+
+  .exercises_text {
+    width: 444px;
+  }
+
+  .exercises_banner-m {
+    width: 444px;
+    height: 242px;
   }
 }
 

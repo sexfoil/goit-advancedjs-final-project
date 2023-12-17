@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   width: 265px;
   height: 52px;
   border-radius: 60px;
@@ -65,12 +66,12 @@
 }
 
 .social_icon {
-  fill: rgba(24, 24, 24);
+  fill: rgba(24, 24, 24, 0.8);
 }
 
 .social-item:hover {
   border: 1px solid rgba(24, 24, 24, 0.1);
-  background-color: rgba(24, 24, 24);
+  background-color: rgba(24, 24, 24, 0.8);
 }
 
 .social-item:hover .social_icon {

@@ -2,7 +2,7 @@
   width: 100%;
   height: 42px;
   border-radius: 30px;
-  border: none;
+  border: 1px solid transparent;
   background-color: var(--color-white);
   color: var(--color-black);
   font-family: var(--font-primary);
@@ -15,11 +15,66 @@
 
 .common-button:hover,
 .common-button:focus {
-  background-color: var(--color-yellow);
+  border-color: var(--color-white);
+  color: var(--color-white);
+  background-color: var(--color-black);
 }
+
+.favorite-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.favorite-btn-icon {
+  fill: transparent;
+  stroke: var(--color-black);
+}
+
+.favorite-btn:hover .favorite-btn-icon,
+.favorite-btn:active .favorite-btn-icon,
+.favorite-btn:focus .favorite-btn-icon {
+  stroke: var(--color-white);
+}
+
+/* Scroll TOP button */
+#scrollToTopButton {
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #242424;
+  color: var(--color-white);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-white);
+}
+.arrow-top-icon {
+  fill: var(--color-white);
+}
+
+#scrollToTopButton:hover {
+  background-color: rgb(36, 36, 36);
+}
+/* End top Scroll button */
 
 @media screen and (min-width: 768px) {
   .common-button {
     height: 48px;
+  }
+  #scrollToTopButton {
+    width: 100px;
+    height: 100px;
+  }
+
+  .arrow-top-icon {
+    width: 33px;
+    height: 33px;
   }
 }

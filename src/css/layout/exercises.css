@@ -271,7 +271,10 @@
 
 .card-footer {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: start;
+  align-content: center;
 }
 
 .info-item-name {
@@ -283,7 +286,24 @@
   fill: var(--color-white-secondary);
 }
 
+.card-info {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.long-text {
+  width: 21px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media screen and (min-width: 768px) {
+  .long-text {
+    width: 27px;
+  }
+
   .exercises_search {
     width: 273px;
   }
@@ -349,6 +369,10 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .long-text {
+    width: 50px;
+  }
+
   .exercises_search {
     margin-bottom: 0;
     margin-right: 30px;

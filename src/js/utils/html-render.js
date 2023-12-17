@@ -67,11 +67,15 @@ function getHtml(cards, category, categoryName, isFavorites) {
                         <span class="long-text">
                             ${burnedCalories} / ${time} min
                         </span>
+                    </div>
+                    <div class="card-info card-text-info">
                         <span class="info-item-name">
                           ${capitalize(category)}: </span>
                         <span class="long-text">
                             ${capitalize(categoryName)}
                         </span>
+                    </div>
+                    <div class="card-info card-text-info">
                         <span class="info-item-name">Target: </span>
                         <span class="long-text">
                             ${capitalize(target)}

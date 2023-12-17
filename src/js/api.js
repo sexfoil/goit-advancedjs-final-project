@@ -20,14 +20,9 @@ function getExercisesByKeyword(
     limit,
     keyword,
   };
-  // console.log('====================================');
-  // console.log(keyword);
-  // console.log('====================================');
-  params[category] = categoryName;
+
   const fullUrl = getUrl(url.EXERCISES, getParameters(params));
-  // console.log('====================================');
-  // console.log(fullUrl);
-  // console.log('====================================');
+
   return requestGET(fullUrl);
 }
 

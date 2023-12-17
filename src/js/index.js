@@ -11,25 +11,34 @@ const search = document.querySelector('.exercises_search');
 const searchInput = document.querySelector('.exercises_search-input');
 const searchButton = document.querySelector('.exercises_search-img');
 
+let categorie = null;
+let categorieValue = null;
+//Базовая инициализация
 const categories = await api.getExercisesByCategory(1, 12);
 itemList.innerHTML = getCategoryCardHtml(categories.results);
-
+//Слушатели
 itemList.addEventListener('click', onCategoryListClick);
 categoryList.addEventListener('click', onCategoryClick);
 searchButton.addEventListener('click', onSearchButton);
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    onSearchButton(e);
+  }
+});
+//Функции к слушателям
 async function onSearchButton(event) {
-  const data = await api.getExercisesByKeyword(
+  event.preventDefault();
+
+  const { results } = await api.getExercisesByKeyword(
     1,
     10,
-    'filter',
-    '',
+    categorie,
+    categorieValue,
     searchInput.value
   );
-
-  event.preventDefault();
-  console.log('====================================');
-  console.log(data);
-  console.log('====================================');
+  itemList.innerHTML = '';
+  exerciseList.innerHTML = '';
+  itemList.innerHTML = getExerciseCardHtml(results);
 }
 async function onCategoryClick(event) {
   try {
@@ -72,10 +81,9 @@ async function onCategoryListClick(event) {
     // let label = data[0].toLocaleLowerCase();
     // let value = data[1].toLocaleLowerCase();
 
-    let label = encodeURIComponent(data[0]).toLocaleLowerCase();
-    let value = encodeURIComponent(data[1]).toLocaleLowerCase();
-    console.log(value);
-    console.log(label);
+    categorie = encodeURIComponent(data[0]).toLocaleLowerCase();
+    categorieValue = encodeURIComponent(data[1]).toLocaleLowerCase();
+
     const fetchPromise = async (label, value) => {
       return await api.getExercisesByKeyword(1, 12, label, value);
     };
@@ -90,7 +98,9 @@ async function onCategoryListClick(event) {
         data[1].charAt(0).toUpperCase() + data[1].slice(1);
       search.style = 'display: block';
     };
-    fetchPromise(label, value).then(handleResult).catch(displayError);
+    fetchPromise(categorie, categorieValue)
+      .then(handleResult)
+      .catch(displayError);
     addExercisesName();
   } catch (error) {
     displayError(error.message);

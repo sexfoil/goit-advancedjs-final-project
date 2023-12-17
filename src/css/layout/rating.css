@@ -1,0 +1,42 @@
+.star-icon {
+    fill: #EEA10C;
+    /* Set your desired background color for stars */
+}
+
+/* New styles for gradient on the last star */
+.star-icon.filled {
+    fill: #EEA10C;
+    /* Set your desired background color for filled stars */
+}
+
+.rating-modal .rating-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.rating-modal .rating-wrapper label {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid #EEA10C;
+
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.rating-modal .rating-wrapper label:hover,
+.rating-modal .rating-wrapper label:active {
+    background-color: #EEA10C;
+    /* Set your desired background color for stars on hover/active */
+}
+
+.rating-modal .rating-wrapper input:checked+label {
+    background-color: #EEA10C;
+    /* Set your desired background color for checked stars */
+}
+
+.rating-modal .rating-wrapper label:last-child {
+    background: linear-gradient(90deg, #EEA10C 0%, #EEA10C 0%);
+}

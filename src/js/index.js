@@ -64,6 +64,8 @@ async function onCategoryClick(event) {
       );
       itemList.innerHTML = '';
       exerciseList.innerHTML = '';
+      searchInput.value = '';
+
       itemList.innerHTML = getCategoryCardHtml(results);
       return;
     };
@@ -104,6 +106,7 @@ async function onCategoryListClick(event) {
       exerciseName.style = 'display: block;';
       exerciseName.textContent = capitalize(data[1]);
       search.style = 'display: block';
+      searchInput.value = '';
     };
     fetchPromise(category, categorieValue)
       .then(handleResult)

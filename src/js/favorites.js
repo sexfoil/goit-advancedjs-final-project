@@ -11,19 +11,15 @@ import {
   clearExerciseModal,
 } from './modals';
 import { displayError } from './utils/helpers';
+import { getFavoriteExercises } from './localstorage';
 
 const favorites = document.querySelector('.exercises_content');
 const modalOverlay = document.querySelector('.modal-overlay');
 
 let exerciseModalElements;
 
-const arr = [
-  // favoriteItem,
-  // favoriteItem,
-  // favoriteItem,
-  // favoriteItem,
-  // favoriteItem,
-];
+const arr = getFavoriteExercises();
+console.log(arr);
 favorites.innerHTML = getFavoritesCardHtml(arr, 'Equipment', 'barbell');
 
 favorites.addEventListener('click', showExerciseModal);

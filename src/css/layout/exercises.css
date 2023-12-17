@@ -107,6 +107,7 @@
   background-color: var(--color-black);
   border-radius: 20px;
   color: var(--color-white);
+  position: relative;
 }
 
 .exercises_text {
@@ -269,11 +270,14 @@
 @media screen and (min-width: 768px) {
   .exercises_wrap {
     gap: 64px;
+    /* position: relative; */
   }
 
   .exercises_side {
     width: 704px;
     gap: 16px;
+    /* position: relative; */
+
   }
 
   .exercises_quote {
@@ -372,6 +376,7 @@
 
 .quote-svg {
   fill: var(--color-white);
+
 }
 
 .quote-svg__commas {

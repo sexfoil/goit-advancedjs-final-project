@@ -11,7 +11,7 @@ import {
   clearExerciseModal,
 } from './modals';
 import { displayError } from './utils/helpers';
-import './quote.js';
+import './quotes.js';
 
 const favorites = document.querySelector('.exercises_content');
 const modalOverlay = document.querySelector('.modal-overlay');

@@ -2,6 +2,7 @@ import { getExerciseCardHtml, getCategoryCardHtml } from './utils/html-render';
 import * as api from './api.js';
 import { attribute } from './property/constants';
 import { displayError } from './utils/helpers.js';
+import { capitalize } from './utils/text-modifier';
 
 const itemList = document.querySelector('.category_content');
 const categoryList = document.querySelector('.exercises_nav');
@@ -11,7 +12,7 @@ const search = document.querySelector('.exercises_search');
 const searchInput = document.querySelector('.exercises_search-input');
 const searchButton = document.querySelector('.exercises_search-img');
 
-let categorie = null;
+let category = null;
 let categorieValue = null;
 //Базовая инициализация
 const categories = await api.getExercisesByCategory(1, 12);
@@ -32,13 +33,14 @@ async function onSearchButton(event) {
   const { results } = await api.getExercisesByKeyword(
     1,
     10,
-    categorie,
+    category,
     categorieValue,
     searchInput.value
   );
   itemList.innerHTML = '';
   exerciseList.innerHTML = '';
-  itemList.innerHTML = getExerciseCardHtml(results);
+  itemList.innerHTML = getExerciseCardHtml(results, category, categorieValue);
+  console.log(results);
 }
 async function onCategoryClick(event) {
   try {
@@ -81,8 +83,8 @@ async function onCategoryListClick(event) {
     // let label = data[0].toLocaleLowerCase();
     // let value = data[1].toLocaleLowerCase();
 
-    categorie = encodeURIComponent(data[0]).toLocaleLowerCase();
-    categorieValue = encodeURIComponent(data[1]).toLocaleLowerCase();
+    category = data[0].toLowerCase();
+    categorieValue = data[1];
 
     const fetchPromise = async (label, value) => {
       return await api.getExercisesByKeyword(1, 12, label, value);
@@ -90,15 +92,18 @@ async function onCategoryListClick(event) {
 
     const handleResult = async ({ results }) => {
       itemList.innerHTML = '';
-      exerciseList.innerHTML = getExerciseCardHtml(results);
+      exerciseList.innerHTML = getExerciseCardHtml(
+        results,
+        category,
+        categorieValue
+      );
     };
     const addExercisesName = () => {
       exerciseName.style = 'display: block;';
-      exerciseName.textContent =
-        data[1].charAt(0).toUpperCase() + data[1].slice(1);
+      exerciseName.textContent = capitalize(data[1]);
       search.style = 'display: block';
     };
-    fetchPromise(categorie, categorieValue)
+    fetchPromise(category, categorieValue)
       .then(handleResult)
       .catch(displayError);
     addExercisesName();

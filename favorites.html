@@ -7,6 +7,7 @@
     <meta name="description" content="Landing page of the Your Energy" />
     
     
+    
     <title>Your Energy</title>
 
     <style>
@@ -18,10 +19,11 @@
       }
     </style>
     <script type="module" crossorigin src="/goit-advancedjs-final-project/commonHelpers.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-advancedjs-final-project/assets/mobile-737c7916.js">
+    <link rel="modulepreload" crossorigin href="/goit-advancedjs-final-project/assets/mobile-b5d6205a.js">
     <link rel="modulepreload" crossorigin href="/goit-advancedjs-final-project/assets/vendor-b20efecd.js">
-    <link rel="stylesheet" href="/goit-advancedjs-final-project/assets/mobile-c49208e7.css">
+    <link rel="stylesheet" href="/goit-advancedjs-final-project/assets/mobile-2d62c80a.css">
     <link rel="stylesheet" href="/goit-advancedjs-final-project/assets/vendor-b2dc1d2d.css">
+    <link rel="stylesheet" href="/goit-advancedjs-final-project/assets/favorites-ae59b03f.css">
   </head>
   <body>
     <header class="header">
@@ -29,7 +31,7 @@
     <div class="header_wraper">
       <a href="./index.html" class="header_logo">
         <svg class="header_logo-icon" width="132" height="24">
-          <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#icon-logo"></use>
+          <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#icon-logo"></use>
         </svg>
       </a>
 
@@ -67,7 +69,7 @@
             target="_blank"
           >
             <svg class="social_icon" width="28" height="28">
-              <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#icon-facebook"></use>
+              <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#icon-facebook"></use>
             </svg>
           </a>
         </li>
@@ -78,7 +80,7 @@
             target="_blank"
           >
             <svg class="social_icon" width="28" height="28">
-              <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#icon-instagram"></use>
+              <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#icon-instagram"></use>
             </svg>
           </a>
         </li>
@@ -89,7 +91,7 @@
             target="_blank"
           >
             <svg class="social_icon" width="28" height="28">
-              <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#icon-youtube"></use>
+              <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#icon-youtube"></use>
             </svg>
           </a>
         </li>
@@ -100,7 +102,7 @@
 
     <main>
       <div class="container">
-        <h1>Favorites</h1>
+        <h1 class="favorites_title">Favorites</h1>
       </div>
       <section class="exercises-section">
   <div class="container">
@@ -143,14 +145,14 @@
         width="32"
         height="32"
       >
-        <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#icon-close"></use>
+        <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#icon-close"></use>
       </svg>
       <svg
         class="mobile-menu-close-button-icon mobile-menu-close-button-icon-tablet"
         width="40"
         height="40"
       >
-        <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#icon-close"></use>
+        <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#icon-close"></use>
       </svg>
     </button>
     <nav class="mobile-menu-nav">
@@ -182,7 +184,7 @@
           target="_blank"
         >
           <svg class="mobile-menu-social-icon" width="28" height="28">
-            <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#icon-facebook"></use>
+            <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#icon-facebook"></use>
           </svg>
         </a>
       </li>
@@ -194,7 +196,7 @@
           target="_blank"
         >
           <svg class="mobile-menu-social-icon" width="28" height="28">
-            <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#icon-instagram"></use>
+            <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#icon-instagram"></use>
           </svg>
         </a>
       </li>
@@ -206,7 +208,7 @@
           target="_blank"
         >
           <svg class="mobile-menu-social-icon" width="28" height="28">
-            <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#icon-youtube"></use>
+            <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#icon-youtube"></use>
           </svg>
         </a>
       </li>
@@ -220,6 +222,12 @@
   referrerpolicy="no-referrer"
 ></script>
 
+<button id="scrollToTopButton" title="Go to top">
+  <svg class="arrow-top-icon" width="18" height="18">
+    <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#icon-arrow-top"></use>
+  </svg>
+</button>
+
     <div class="modal-overlay display-none-js">
       <div class="modal modal-exercise">
   <div class="modal-content display-none-js">
@@ -230,19 +238,19 @@
         <span class="rating"></span>
         <div class="stars">
           <svg class="star-icon" width="18" height="18">
-            <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#star"></use>
+            <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#star"></use>
           </svg>
           <svg class="star-icon" width="18" height="18">
-            <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#star"></use>
+            <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#star"></use>
           </svg>
           <svg class="star-icon" width="18" height="18">
-            <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#star"></use>
+            <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#star"></use>
           </svg>
           <svg class="star-icon" width="18" height="18">
-            <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#star"></use>
+            <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#star"></use>
           </svg>
           <svg class="star-icon" width="18" height="18">
-            <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#star"></use>
+            <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#star"></use>
           </svg>
         </div>
       </div>
@@ -263,14 +271,14 @@
         width="24"
         height="24"
       >
-        <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#close"></use>
+        <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#close"></use>
       </svg>
       <svg
         class="modal-close-icon modal-close-icon-tablet"
         width="28"
         height="28"
       >
-        <use href="/goit-advancedjs-final-project/assets/icons-31b2b0f6.svg#close"></use>
+        <use href="/goit-advancedjs-final-project/assets/icons-f5937425.svg#close"></use>
       </svg>
     </button>
   </div>

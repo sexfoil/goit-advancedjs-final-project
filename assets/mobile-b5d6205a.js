@@ -59,4 +59,4 @@
                 </div>
             </li>
         `}).join("")}function f(s){return Math.round(s*10)/10}(()=>{const s=document.querySelector(".js-menu-container"),r=document.querySelector(".js-open-menu"),n=document.querySelector(".js-close-menu"),i=document.querySelector(".js-menu-overlay"),e=document.querySelectorAll(".mobile-menu-nav-link"),t=()=>{const o=r.getAttribute("aria-expanded")==="true"||!1;r.setAttribute("aria-expanded",!o),s.classList.toggle("is-open"),i.classList.toggle("is-shown");const l=o?"enableBodyScroll":"disableBodyScroll";bodyScrollLock[l](document.body)};r.addEventListener("click",t),n.addEventListener("click",t),e.forEach(o=>o.addEventListener("click",t)),window.matchMedia("(min-width: 768px)").addEventListener("change",o=>{o.matches&&(s.classList.remove("is-open"),r.setAttribute("aria-expanded",!1),i.classList.remove("is-shown"),bodyScrollLock.enableBodyScroll(document.body))})})();export{h as a,m as b,p as g};
-//# sourceMappingURL=mobile-737c7916.js.map
+//# sourceMappingURL=mobile-b5d6205a.js.map

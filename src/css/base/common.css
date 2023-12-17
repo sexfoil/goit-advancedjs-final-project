@@ -52,11 +52,3 @@ body {
   font-weight: var(--font-weight-primary-regular);
   line-height: 128%;
 }
-
-
-/* .long-text {
-    width: 30px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-} */

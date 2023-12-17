@@ -3,6 +3,7 @@ export const Pagination = class {
   limit = 12;
   buttonsList = [];
   event = null;
+  sectionBuilderFunction = () => console.log('sectionBuilderFunction ');
 
   constructor(name, container) {
     this.name = name;
@@ -19,14 +20,15 @@ export const Pagination = class {
   }
 
   build({ totalPages, sectionBuilderFunction, limit = 12 }) {
+    this.page = 1;
+    this.buttonsList = [];
     this.limit = limit;
+    this.sectionBuilderFunction = sectionBuilderFunction;
     const oldPaginationList = document.querySelector('.pagination-list');
-    if (oldPaginationList) {
-      // oldPaginationList.innerHTML = '';
-      oldPaginationList.remove();
-    }
 
-    if (totalPages <= 1) return;
+    if (oldPaginationList) {
+      oldPaginationList.innerHTML = '';
+    }
 
     const paginationList = document.createElement('ul');
     paginationList.classList.add('pagination-list');
@@ -43,7 +45,7 @@ export const Pagination = class {
         const newCurrentPage = this.page;
 
         if (oldCurrentPage !== newCurrentPage) {
-          await sectionBuilderFunction();
+          await this.sectionBuilderFunction();
 
           this.render();
         }
@@ -64,7 +66,6 @@ export const Pagination = class {
         );
       }
     };
-
     paginationPageButtons();
     this.render();
   }

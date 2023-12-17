@@ -39,3 +39,22 @@ function onCategoryListClick(event) {
 
 document.querySelector('.nav-item_home').classList.add('active');
 document.querySelector('.nav-item_favorites').classList.remove('active');
+
+// Scroll
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById('scrollToTopButton').style.display = 'block';
+  } else {
+    document.getElementById('scrollToTopButton').style.display = 'none';
+  }
+}
+
+// Когда пользователь нажимает на кнопку
+document.getElementById('scrollToTopButton').onclick = function () {
+  document.body.scrollTop = 0; // Для Safari
+  document.documentElement.scrollTop = 0; // Для Chrome, Firefox, IE и Opera
+};

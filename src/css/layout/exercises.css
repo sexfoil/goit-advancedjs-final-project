@@ -75,7 +75,7 @@
   content: '';
   position: absolute;
   bottom: -8px;
-  width: 53px;
+  width: 100%;
   height: 4px;
   border-radius: 2px;
   background: #242424;
@@ -284,6 +284,14 @@
 }
 
 @media screen and (min-width: 768px) {
+  .exercises_search {
+    width: 273px;
+  }
+  .exercises_search-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
   .exercises_wrap {
     gap: 64px;
   }
@@ -341,6 +349,17 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .exercises_search {
+    margin-bottom: 0;
+    margin-right: 30px;
+  }
+  .exercises_top {
+    flex-direction: row;
+    align-items: center;
+  }
+  .exercises_search-wrap {
+    align-items: center;
+  }
   .exercises_wrap {
     gap: 40px;
   }

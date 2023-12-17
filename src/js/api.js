@@ -19,6 +19,7 @@ function getExercisesByKeyword(
     page,
     limit,
   };
+
   params[category] = categoryName;
   if (keyword) {
     params['keyword'] = keyword;

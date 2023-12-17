@@ -1,5 +1,6 @@
 export const Pagination = class {
   page = 1;
+  totalPages = 1;
   limit = 12;
   buttonsList = [];
   event = null;
@@ -21,7 +22,7 @@ export const Pagination = class {
 
   build({ totalPages, sectionBuilderFunction, limit = 12 }) {
     this.page = 1;
-    this.buttonsList = [];
+    this.totalPages = totalPages;
     this.limit = limit;
     this.sectionBuilderFunction = sectionBuilderFunction;
     const oldPaginationList = document.querySelector('.pagination-list');
@@ -52,25 +53,56 @@ export const Pagination = class {
       }
     }
 
-    const paginationPageButtons = () => {
-      for (let i = 1; i <= totalPages; i += 1) {
-        const buttonClass = ['pagination-btn'];
-        if (i === this.page) buttonClass.push('pagination-btn--active');
-        this.buttonsList.push(
-          `<li>
-          <button type='button'
-          name="page"
-          class='${buttonClass.join(' ')}'
-          data-pagination=${i}>${i}</button>
-          </li>`
-        );
-      }
-    };
-    paginationPageButtons();
     this.render();
   }
 
+  createButton(number) {
+    const buttonClass = ['pagination-btn'];
+    if (number === this.page) buttonClass.push('pagination-btn--active');
+
+    const temlate = `<li>
+            <button type='button'
+            name="page"
+            class='${buttonClass.join(' ')}'
+            data-pagination=${number}>${number}</button>
+            </li>`;
+
+    return temlate;
+  }
+
+  makeButtonsList(totalPages) {
+    this.buttonsList = [];
+
+    // Always print first page button
+    this.buttonsList.push(this.createButton(1));
+
+    if (this.totalPages === 1) {
+      return;
+    }
+
+    // Print "..." only if currentPage is > 4
+    if (this.page > 4) {
+      this.buttonsList.push('...');
+    }
+
+    // Print previous pages, current page, and next pages
+    for (let i = this.page - 2; i <= this.page + 2; i++) {
+      if (i > 1 && i < totalPages) {
+        this.buttonsList.push(this.createButton(i));
+      }
+    }
+
+    // Print "..." if this.page is < lastPage - 3
+    if (this.page < totalPages - 3) {
+      this.buttonsList.push('...');
+    }
+
+    // Always print last page button
+    this.buttonsList.push(this.createButton(totalPages));
+  }
+
   render() {
+    this.makeButtonsList(this.totalPages);
     const paginationList = document.querySelector('.pagination-list');
 
     paginationList.innerHTML = this.buttonsList.join('');

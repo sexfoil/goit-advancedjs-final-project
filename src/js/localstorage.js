@@ -1,5 +1,4 @@
 import { getExerciseById } from './api';
-import { fillFavorities } from './favorites';
 
 // Запис Favorite exercise в LS
 // Очікуємо об'єкт exercise якщо не знаходимо в LS об'єкта з
@@ -21,7 +20,6 @@ function removeFromFavorite(id) {
   let favoriteExercises = getFavoriteExercises();
   favoriteExercises = favoriteExercises.filter(item => item._id !== id);
   localStorage.setItem('FavoriteExercises', JSON.stringify(favoriteExercises));
-  displayFavorites(); // Оновлення сторінки
 }
 
 // Получити список favorites з LS або []
@@ -32,10 +30,6 @@ function getFavoriteExercises() {
 // Перевірка списка favorites чи е обʼєкт за id
 function checkFavoriteExercises(id) {
   return getFavoriteExercises().some(item => item._id === id);
-}
-
-function displayFavorites() {
-  fillFavorities();
 }
 
 export {

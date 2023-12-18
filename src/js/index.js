@@ -1,19 +1,9 @@
 import { getExerciseCardHtml, getCategoryCardHtml } from './utils/html-render';
 import * as api from './api.js';
 import { attribute } from './property/constants';
-import { displayError } from './utils/helpers.js';
 import { capitalize } from './utils/text-modifier';
 import { exercisesPagination } from './pagination/exercises-pagination.js';
-import {
-  checkFavoriteExercises,
-  addToFavorites,
-  removeFromFavorite,
-} from './localstorage';
-import {
-  favoriteBtnContent,
-  fillExerciseModal,
-  clearExerciseModal,
-} from './modals';
+import { showExerciseModal } from './property/exerciseDeletionHandler.js';
 
 const itemList = document.querySelector('.category_content');
 const categoryList = document.querySelector('.exercises_nav');
@@ -25,6 +15,7 @@ const searchButton = document.querySelector('.exercises_search-img');
 
 itemList.innerHTML = '';
 exerciseList.innerHTML = '';
+exerciseList.removeAttribute('data-info');
 
 let category = null;
 let categorieValue = null;
@@ -152,8 +143,6 @@ async function onCategoryListClick(event) {
     const data = event.target.dataset[attribute.DATA_INFO].split(
       attribute.DATA_INFO_DELIMETER
     );
-    // let label = data[0].toLocaleLowerCase();
-    // let value = data[1].toLocaleLowerCase();
 
     category = data[0].toLowerCase();
     categorieValue = data[1];
@@ -210,25 +199,6 @@ async function onCategoryListClick(event) {
   }
 }
 
-// const resp = await api.getExercisesByKeyword(1, 10, 'bodypart', 'back', 'back');
-// console.log(resp);
-
-// const quote = document.querySelector('.exercises_quote');
-// const q = await api.getQuote();
-// console.log(q);
-// quote.innerHTML = `"${q.quote}"<br><br> ${q.author}`;
-
-// const data = await api.subscribe('api34@mail.com');
-// console.log(data);
-
-// const rate = await api.rateExercise(
-//   '64f389465ae26083f39b17a2',
-//   5,
-//   'api33333@mail.com',
-//   'Cool'
-// );
-// console.log(rate);
-
 document.querySelector('.nav-item_home').classList.add('active');
 document.querySelector('.nav-item_favorites').classList.remove('active');
 
@@ -251,81 +221,6 @@ document.getElementById('scrollToTopButton').onclick = function () {
   document.documentElement.scrollTop = 0; // Для Chrome, Firefox, IE и Opera
 };
 
-// Exercise modal
-const modalOverlay = document.querySelector('.modal-overlay');
-
-let exerciseModalElements;
-
 document
   .querySelector('.exercises_content')
   .addEventListener('click', showExerciseModal);
-
-async function showExerciseModal(event) {
-  const exerciseItem = event.target.closest('.exercises_item');
-
-  if (!exerciseItem) return;
-
-  const { id: exerciseId } = exerciseItem;
-
-  modalOverlay.classList.remove('display-none-js');
-
-  try {
-    await fillExerciseModal(exerciseId);
-
-    exerciseModalElements = {
-      closeBtn: document.querySelector('#modal-close-button'),
-      favoriteBtn: document.querySelector('.modal-exercise .favorite-btn'),
-    };
-
-    modalOverlay.addEventListener('click', closeExerciseModal);
-    exerciseModalElements.closeBtn.addEventListener(
-      'click',
-      closeExerciseModal
-    );
-    exerciseModalElements.favoriteBtn.addEventListener(
-      'click',
-      handleFovouriteExercise
-    );
-    document.addEventListener('keydown', handleEscClick);
-  } catch (error) {
-    modalOverlay.classList.add('display-none-js');
-    displayError(error.message);
-  }
-}
-
-function closeExerciseModal() {
-  modalOverlay.classList.add('display-none-js');
-  exerciseModalElements.closeBtn.removeEventListener(
-    'click',
-    closeExerciseModal
-  );
-  modalOverlay.removeEventListener('click', closeExerciseModal);
-  exerciseModalElements.favoriteBtn.removeEventListener(
-    'click',
-    handleFovouriteExercise
-  );
-
-  clearExerciseModal();
-}
-
-function handleFovouriteExercise(event) {
-  event.stopPropagation();
-
-  const exerciseId = event.target.closest('.modal-exercise').dataset.exerciseId;
-
-  if (checkFavoriteExercises(exerciseId)) {
-    removeFromFavorite(exerciseId);
-    exerciseModalElements.favoriteBtn.innerHTML = favoriteBtnContent.add;
-  } else {
-    addToFavorites(exerciseId);
-    exerciseModalElements.favoriteBtn.innerHTML = favoriteBtnContent.remove;
-  }
-
-  exerciseModalElements.favoriteBtn.blur();
-}
-
-function handleEscClick(event) {
-  if (event.key !== 'Escape') return;
-
-  closeExerciseModal();
-}

@@ -399,8 +399,8 @@
     gap: 32px 15px;
   }
 
-  .exercises_content>.empty-exercises,
-  .exercises_content>.empty-favorites {
+  .exercises_content:has(.empty-exercises),
+  .exercises_content:has(.empty-favorites) {
     grid-template-columns: 1fr;
   }
 

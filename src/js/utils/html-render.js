@@ -23,11 +23,11 @@ function getHtml(cards, category, categoryName, isFavorites) {
                 <div class="exercise-card-header">
                     <div class="card-workout">
                         <div class="card-workout-logo card-text-logo">Workout</div>
-                        <div class="workout-logo-addon text-usual">${
-                          isFavorites
-                            ? svg.recycleBin
-                            : svg.rating.replace('RATING', round(rating))
-                        }</div>
+                        <div class="workout-logo-addon text-usual">${getLogoSvg(
+                          isFavorites,
+                          _id,
+                          rating
+                        )}</div>
                     </div>
                     <div class="card-start">
                         <div class="card-start-name usual-text">Start</div>
@@ -90,6 +90,13 @@ export function getCategoryCardHtml(category) {
     .join('');
 }
 
+function getLogoSvg(isFavorites, id, rating) {
+  if (isFavorites) {
+    return svg.recycleBin.replace('CARD_ID', id);
+  }
+  return svg.rating.replace('RATING', convertNumber(rating));
+}
+
 const svg = {
   rating: `
     <p class="text-usuala">RATING</p>
@@ -97,8 +104,8 @@ const svg = {
         <use href="./img/icons.svg#yellow-star"></use>
     </svg>`,
   recycleBin: `
-    <svg class="card-icon" width="16" height="16">
-        <use href="./img/icons.svg#icon-remove"></use>
+    <svg class="card-icon recycle-bin" data-card="CARD_ID" width="16" height="16">
+        <use href="./img/icons.svg#icon-remove" data-card="CARD_ID" ></use>
     </svg>`,
   arrow: `
     <svg class="card-icon" width="16" height="16">
@@ -110,6 +117,8 @@ const svg = {
     </svg>`,
 };
 
-function round(num) {
-  return Math.round(num * 10) / 10;
+function convertNumber(num) {
+  const result = String(Math.round(num * 10) / 10);
+  const extra = result.includes('.') ? '' : '.0';
+  return result + extra;
 }

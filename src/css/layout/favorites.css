@@ -24,11 +24,35 @@
 .exercises_content-wrap {
   order: 2;
 }
+
+.exercises_text-descr {
+  display: none;
+}
+
+.exercises_text-icon-wrap {
+  position: relative;
+  left: 0;
+  right: 0;
+  background-color: white;
+}
+
+.exercises_text-icon {
+  fill: var(--color-black);
+}
+
+.exercises_text {
+  padding: 20px;
+}
+
 @media screen and (min-width: 768px) {
   .favorites_title {
     font-size: 44px;
     line-height: 1.1;
     letter-spacing: -0.88px;
+  }
+
+  .exercises_text {
+    padding: 25px;
   }
 
   .exercises_quote {

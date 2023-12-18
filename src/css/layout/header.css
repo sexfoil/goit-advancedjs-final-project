@@ -22,7 +22,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6px 12px;
   color: var(--color-white);
   border-radius: 30px;
   gap: 10px;
@@ -37,6 +36,11 @@
 .nav-item_favorites {
   width: 91px;
   height: 36px;
+}
+.nav-link-home,
+.nav-link-favorites {
+  display: block;
+  padding: 12px 12px;
 }
 
 .nav-list .active {

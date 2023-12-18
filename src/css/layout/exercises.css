@@ -123,19 +123,17 @@
   }
 }
 
-
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1440px) {
   .exercises_quote {
     padding: 0px 20px 20px 90px;
     width: calc(50% - 8px);
   }
 }
 
-
 .exercises_text {
   order: 3;
   width: 100%;
-  padding: 0px 20px 20px 70px;
+  padding: 20px 20px 20px 70px;
   border-radius: 20px;
   background-color: var(--color-white-secondary);
   display: flex;
@@ -144,17 +142,36 @@
   position: relative;
 }
 
+.exercises_text-descr {
+  margin-top: 20px;
+}
+
+.exercises_text-icon-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  padding: 12;
+  background-color: #242424;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.exercises_text-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--color-white);
+}
+
 @media screen and (min-width: 768px) {
   .exercises_text {
-    padding: 0px 20px 20px 90px;
+    padding: 20px 20px 20px 90px;
     width: calc(50% - 8px);
   }
 }
-
-/* .exercises_text {
-    width: calc(50% - 8px);
-    padding: 25px;
-  } */
 
 .exercises_banner-m {
   order: 2;
@@ -165,10 +182,6 @@
   border-radius: 20px;
   background-position: top center;
   background-size: cover;
-}
-
-.time-text {
-  margin-top: 15px;
 }
 
 .exercises_content-wrap {
@@ -190,7 +203,7 @@
   margin-bottom: 46px;
 }
 
-.category-text-content>h3 {
+.category-text-content > h3 {
   color: var(--color-white);
   text-align: center;
   font-family: var(--font-primary);
@@ -200,7 +213,7 @@
   line-height: 100%;
 }
 
-.category-text-content>p {
+.category-text-content > p {
   color: var(--color-white);
   text-align: center;
   font-family: var(--font-primary);
@@ -370,7 +383,6 @@
     width: 704px;
     gap: 16px;
     /* position: relative; */
-
   }
 
   .exercises_quote {
@@ -379,10 +391,9 @@
     position: relative;
   }
 
-  .category-text-content>h3 {
+  .category-text-content > h3 {
     font-size: 24px;
   }
-
 
   .exercises_banner-m {
     width: 288px;
@@ -399,8 +410,8 @@
     gap: 32px 15px;
   }
 
-  .exercises_content>.empty-exercises,
-  .exercises_content>.empty-favorites {
+  .exercises_content > .empty-exercises,
+  .exercises_content > .empty-favorites {
     grid-template-columns: 1fr;
   }
 
@@ -452,7 +463,6 @@
 
   .exercises_content-wrap {
     width: calc(100% - 534px);
-    margin-bottom: 132px;
     order: 2;
   }
 
@@ -472,6 +482,8 @@
 
   .exercises_text {
     width: 444px;
+    padding: 40px 40px 40px 90px;
+    position: relative;
   }
 
   .exercises_banner-m {
@@ -570,7 +582,6 @@
   .quote_author {
     font-size: 16px;
     line-height: 1.5;
-    ;
   }
 }
 
@@ -601,8 +612,21 @@
   background-position: top center;
   background-size: cover;
 }
+.exercises_text-descr {
+  overflow: hidden;
+  color: #242424;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
 
 @media screen and (min-width: 768px) {
+  .exercises_text-icon-wrap {
+    left: 40px;
+    right: 40px;
+  }
   .exercises_banner-small {
     height: 249px;
     width: 288px;
@@ -611,9 +635,16 @@
     background-position: top center;
     background-size: cover;
   }
+  .exercises_text {
+    width: 400px;
+  }
+
+  .exercises_text-descr {
+    width: 270px;
+  }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1440px) {
   .exercises_banner-small {
     height: 444px;
     width: 242px;
@@ -623,9 +654,18 @@
     background-position: top center;
     background-size: cover;
   }
+  .exercises_text {
+    width: 444px;
+  }
 
+  .exercises_text-descr {
+    width: 100%;
+    text-overflow: unset;
+    display: -webkit-box;
+    -webkit-line-clamp: 50;
+    -webkit-box-orient: vertical;
+  }
 }
-
 
 .time-svg-wrap {
   position: absolute;
@@ -643,14 +683,14 @@
 
 .time-svg {
   fill: var(--color-white);
-
 }
-
 
 .time-text {
   font-weight: var(--font-weight-primary-semibold);
-  margin-bottom: 2px;
+  color: #242424;
   font-size: 24px;
+  font-style: normal;
+  line-height: 1.33; /* 133.333% */
   color: var(--color-black);
 }
 
@@ -663,8 +703,19 @@
 }
 
 .time-description {
+  font-family: var(--font-primary);
   font-size: 14px;
   line-height: 1.29;
   font-weight: var(--font-weight-primary-regular);
   color: var(--color-black);
+  color: #242424;
+  font-size: 14px;
+  line-height: 1.28; /* 128.571% */
+}
+
+.exercises_text-sub-title {
+  color: rgba(36, 36, 36, 0.6);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
 }

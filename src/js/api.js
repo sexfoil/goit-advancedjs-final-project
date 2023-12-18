@@ -19,7 +19,7 @@ function getExercisesByKeyword(
     page,
     limit,
   };
-
+  console.log('api: ', category);
   params[category] = categoryName;
   if (keyword) {
     params['keyword'] = keyword;

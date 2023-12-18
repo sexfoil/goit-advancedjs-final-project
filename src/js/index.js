@@ -67,6 +67,7 @@ async function onSearchButton(event) {
 
     itemList.innerHTML = '';
     exerciseList.innerHTML = '';
+    console.log(results);
     exerciseList.innerHTML = getExerciseCardHtml(
       results,
       category,
@@ -144,7 +145,7 @@ async function onCategoryListClick(event) {
       attribute.DATA_INFO_DELIMETER
     );
 
-    category = data[0].toLowerCase();
+    category = data[0] === 'Body parts' ? 'bodypart' : data[0].toLowerCase();
     categorieValue = data[1];
 
     const renderingOnCategoryListClick = async (category, categorieValue) => {

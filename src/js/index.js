@@ -67,7 +67,6 @@ async function onSearchButton(event) {
 
     itemList.innerHTML = '';
     exerciseList.innerHTML = '';
-    console.log(results);
     exerciseList.innerHTML = getExerciseCardHtml(
       results,
       category,

@@ -263,7 +263,7 @@ async function showExerciseModal(event) {
     );
     exerciseModalElements.favoriteBtn.addEventListener(
       'click',
-      handleFovouriteExercise
+      handleFovoriteExercise
     );
     document.addEventListener('keydown', handleEscClick);
   } catch (error) {
@@ -281,16 +281,17 @@ function closeExerciseModal() {
   modalOverlay.removeEventListener('click', closeExerciseModal);
   exerciseModalElements.favoriteBtn.removeEventListener(
     'click',
-    handleFovouriteExercise
+    handleFovoriteExercise
   );
 
   clearExerciseModal();
 }
 
-function handleFovouriteExercise(event) {
+function handleFovoriteExercise(event) {
   event.stopPropagation();
 
-  const exerciseId = event.target.closest('.modal-exercise').dataset.exerciseId;
+  const exercise = event.target.closest('.modal-exercise');
+  const exerciseId = exercise.dataset.exerciseId;
 
   if (checkFavoriteExercises(exerciseId)) {
     removeFromFavorite(exerciseId);

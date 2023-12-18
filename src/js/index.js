@@ -1,19 +1,10 @@
 import { getExerciseCardHtml, getCategoryCardHtml } from './utils/html-render';
 import * as api from './api.js';
 import { attribute } from './property/constants';
-import { displayError } from './utils/helpers.js';
+// import { displayError } from './utils/helpers.js';
 import { capitalize } from './utils/text-modifier';
 import { exercisesPagination } from './pagination/exercises-pagination.js';
-import {
-  checkFavoriteExercises,
-  addToFavorites,
-  removeFromFavorite,
-} from './localstorage';
-import {
-  favoriteBtnContent,
-  fillExerciseModal,
-  clearExerciseModal,
-} from './modals';
+import * as delegation from './property/exerciseDeletionHandler.js';
 
 const itemList = document.querySelector('.category_content');
 const categoryList = document.querySelector('.exercises_nav');
@@ -25,6 +16,7 @@ const searchButton = document.querySelector('.exercises_search-img');
 
 itemList.innerHTML = '';
 exerciseList.innerHTML = '';
+exerciseList.removeAttribute('data-info');
 
 let category = null;
 let categorieValue = null;
@@ -230,82 +222,6 @@ document.getElementById('scrollToTopButton').onclick = function () {
   document.documentElement.scrollTop = 0; // Для Chrome, Firefox, IE и Opera
 };
 
-// Exercise modal
-const modalOverlay = document.querySelector('.modal-overlay');
-
-let exerciseModalElements;
-
 document
   .querySelector('.exercises_content')
-  .addEventListener('click', showExerciseModal);
-
-async function showExerciseModal(event) {
-  const exerciseItem = event.target.closest('.exercises_item');
-
-  if (!exerciseItem) return;
-
-  const { id: exerciseId } = exerciseItem;
-
-  modalOverlay.classList.remove('display-none-js');
-
-  try {
-    await fillExerciseModal(exerciseId);
-
-    exerciseModalElements = {
-      closeBtn: document.querySelector('#modal-close-button'),
-      favoriteBtn: document.querySelector('.modal-exercise .favorite-btn'),
-    };
-
-    modalOverlay.addEventListener('click', closeExerciseModal);
-    exerciseModalElements.closeBtn.addEventListener(
-      'click',
-      closeExerciseModal
-    );
-    exerciseModalElements.favoriteBtn.addEventListener(
-      'click',
-      handleFovoriteExercise
-    );
-    document.addEventListener('keydown', handleEscClick);
-  } catch (error) {
-    modalOverlay.classList.add('display-none-js');
-    displayError(error.message);
-  }
-}
-
-function closeExerciseModal() {
-  modalOverlay.classList.add('display-none-js');
-  exerciseModalElements.closeBtn.removeEventListener(
-    'click',
-    closeExerciseModal
-  );
-  modalOverlay.removeEventListener('click', closeExerciseModal);
-  exerciseModalElements.favoriteBtn.removeEventListener(
-    'click',
-    handleFovoriteExercise
-  );
-
-  clearExerciseModal();
-}
-
-function handleFovoriteExercise(event) {
-  event.stopPropagation();
-
-  const exercise = event.target.closest('.modal-exercise');
-  const exerciseId = exercise.dataset.exerciseId;
-
-  if (checkFavoriteExercises(exerciseId)) {
-    removeFromFavorite(exerciseId);
-    exerciseModalElements.favoriteBtn.innerHTML = favoriteBtnContent.add;
-  } else {
-    addToFavorites(exerciseId);
-    exerciseModalElements.favoriteBtn.innerHTML = favoriteBtnContent.remove;
-  }
-
-  exerciseModalElements.favoriteBtn.blur();
-}
-
-function handleEscClick(event) {
-  if (event.key !== 'Escape') return;
-
-  closeExerciseModal();
-}
+  .addEventListener('click', delegation.showExerciseModal);

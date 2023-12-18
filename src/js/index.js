@@ -1,10 +1,9 @@
 import { getExerciseCardHtml, getCategoryCardHtml } from './utils/html-render';
 import * as api from './api.js';
 import { attribute } from './property/constants';
-// import { displayError } from './utils/helpers.js';
 import { capitalize } from './utils/text-modifier';
 import { exercisesPagination } from './pagination/exercises-pagination.js';
-import * as delegation from './property/exerciseDeletionHandler.js';
+import { showExerciseModal } from './property/exerciseDeletionHandler.js';
 
 const itemList = document.querySelector('.category_content');
 const categoryList = document.querySelector('.exercises_nav');
@@ -224,4 +223,4 @@ document.getElementById('scrollToTopButton').onclick = function () {
 
 document
   .querySelector('.exercises_content')
-  .addEventListener('click', delegation.showExerciseModal);
+  .addEventListener('click', showExerciseModal);

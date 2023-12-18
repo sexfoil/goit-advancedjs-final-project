@@ -24,6 +24,12 @@ export async function showExerciseModal(event) {
 
   const { id: exerciseId } = exerciseItem;
 
+  if (event.target.dataset && event.target.dataset.card) {
+    removeFromFavorite(exerciseItem.id);
+    updateFavorities();
+    return;
+  }
+
   modalOverlay.classList.remove('display-none-js');
 
   try {

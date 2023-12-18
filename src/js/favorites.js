@@ -1,5 +1,5 @@
 import { getFavoritesCardHtml } from './utils/html-render';
-import * as delegation from './property/exerciseDeletionHandler.js';
+import { showExerciseModal } from './property/exerciseDeletionHandler.js';
 import { getFavoriteExercises } from './localstorage';
 
 const favorites = document.querySelector('.exercises_content');
@@ -12,7 +12,7 @@ export function updateFavorities() {
 
 updateFavorities();
 
-favorites.addEventListener('click', delegation.showExerciseModal);
+favorites.addEventListener('click', showExerciseModal);
 
 document.querySelector('.nav-item_home').classList.remove('active');
 document.querySelector('.nav-item_favorites').classList.add('active');

@@ -152,8 +152,6 @@ async function onCategoryListClick(event) {
     const data = event.target.dataset[attribute.DATA_INFO].split(
       attribute.DATA_INFO_DELIMETER
     );
-    // let label = data[0].toLocaleLowerCase();
-    // let value = data[1].toLocaleLowerCase();
 
     category = data[0].toLowerCase();
     categorieValue = data[1];
@@ -209,25 +207,6 @@ async function onCategoryListClick(event) {
     displayError(error.message);
   }
 }
-
-// const resp = await api.getExercisesByKeyword(1, 10, 'bodypart', 'back', 'back');
-// console.log(resp);
-
-// const quote = document.querySelector('.exercises_quote');
-// const q = await api.getQuote();
-// console.log(q);
-// quote.innerHTML = `"${q.quote}"<br><br> ${q.author}`;
-
-// const data = await api.subscribe('api34@mail.com');
-// console.log(data);
-
-// const rate = await api.rateExercise(
-//   '64f389465ae26083f39b17a2',
-//   5,
-//   'api33333@mail.com',
-//   'Cool'
-// );
-// console.log(rate);
 
 document.querySelector('.nav-item_home').classList.add('active');
 document.querySelector('.nav-item_favorites').classList.remove('active');
